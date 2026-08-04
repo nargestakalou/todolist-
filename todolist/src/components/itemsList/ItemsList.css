@@ -1,0 +1,50 @@
+a {
+  all: unset;
+  text-decoration: none !important;
+}
+
+.itemContainer {
+  padding: 30px;
+  background-color: rgb(244, 251, 251) !important;
+
+  text-align: center;
+  border-radius: 20px;
+  color: rgb(109, 214, 205);
+}
+.itemContainer .iconItem {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* color: rgb(248, 202, 133); */
+  color: rgb(109, 214, 205);
+  background-color: rgba(109, 214, 205, 0.2);
+}
+.itemContainer h5 {
+  font-weight: 700;
+  padding: 6px;
+}
+.itemContainer .itemCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.itemContainer .itemCount span {
+  font-size: 14px;
+}
+.itemContainer .itemCount b {
+  padding: 0 5px;
+}
+.backgroundColor {
+  background-color: rgb(254, 250, 244) !important ;
+  color: rgb(248, 202, 133) !important;
+}
+.customIcon {
+  color: rgb(248, 202, 133) !important;
+  background-color: rgba(248, 202, 133, 0.2) !important;
+}

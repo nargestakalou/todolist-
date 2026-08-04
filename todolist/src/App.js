@@ -6,6 +6,7 @@ import Ideas from './pages/ideas/Ideas';
 import Work from './pages/work/Work';
 import AllTask from './pages/allTask/AllTask';
 import Favourites from './pages/favourites/Favourites';
+import Personal from './pages/personal/Personal';
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
       <Route  path='/ideas'   element={<Ideas/>} />
       <Route  path='/work'  element={<Work/>} />
       <Route  path='/favourites'  element={<Favourites/>} />
+      <Route path='/personal'   element={<Personal/>} />
 
     </Routes>
     

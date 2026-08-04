@@ -1,0 +1,10 @@
+.addItem{
+      background-color: rgb(254, 250, 244) !important ;
+  color: rgb(248, 202, 133) !important;
+border-radius: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%;
+
+}
