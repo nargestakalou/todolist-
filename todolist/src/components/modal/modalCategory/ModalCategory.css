@@ -1,0 +1,11 @@
+.buttonAddCategory{
+    all: unset;
+    width: 100%;
+    text-align: center;
+    margin: 0px 0;
+    padding: 14px;
+    border-radius: 15px;
+    background: linear-gradient(90deg,#37C6C8,#4FD4C7);
+    color: #fff;
+
+}

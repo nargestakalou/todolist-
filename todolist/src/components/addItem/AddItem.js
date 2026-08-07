@@ -4,7 +4,7 @@ import { MdAdd } from "react-icons/md";
 
 function AddItem(){
     return(
-        <Link to={''}>
+        <Link to='/addnewitem'>
         <div className="addItem">
             <MdAdd size={'50px'}/>
         </div>

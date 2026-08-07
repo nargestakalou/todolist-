@@ -7,6 +7,7 @@ import Work from './pages/work/Work';
 import AllTask from './pages/allTask/AllTask';
 import Favourites from './pages/favourites/Favourites';
 import Personal from './pages/personal/Personal';
+import AddNewItem from './pages/addNewItem/AddNewItem';
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
       <Route  path='/work'  element={<Work/>} />
       <Route  path='/favourites'  element={<Favourites/>} />
       <Route path='/personal'   element={<Personal/>} />
+      <Route path='/addnewitem' element={<AddNewItem/>}   />
 
     </Routes>
     

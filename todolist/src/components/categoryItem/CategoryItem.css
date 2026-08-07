@@ -1,0 +1,104 @@
+.buttonCategory {
+  all: unset;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #E8EEF2;
+  padding: 12px;
+  /* margin-right: 10px; */
+  border-radius: 15px;
+  margin-bottom: 6px;
+}
+.buttonCategory .left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonCategory   .left .iconCategory{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.buttonCategory .titleCategory{
+    padding-left: 10px;
+    font-weight: bold;
+    color: #4A5568;
+    font-size: 18px;
+
+}
+.buttonCategory .right{
+    color: #E8EEF2;
+    display: flex;
+    align-items: center;
+
+}
+.buttonCategory:hover{
+    background-color: #F8FCFC;
+
+}
+.buttonCategory:focus{
+    border:1px solid #46C2C7;
+    background-color:#F2FCFC ;
+}
+.color1{
+      background-color: #E8F8F8;
+
+    color: #2CA8B3;
+
+}
+.color2{
+     background-color: #EAF9F5;
+
+    color: #49B88A;
+
+
+}
+.color3{
+     background-color: #F3ECFF;
+
+    color: #9B6EF3;
+
+
+}
+.color4{
+     background-color: #FFEDEE;
+
+    color: #F26D6D;
+
+
+}
+.color5{
+     background-color: #FFF4E3;
+
+    color: #F2A93B;
+
+
+}
+.color6{
+     background-color: #EEF9E9;
+
+    color: #6ABF4B;
+
+
+}
+.color7{
+     background-color: #EAF4FF;
+
+    color: #4A90E2;
+
+
+}
+.color8{
+     background-color: #F3F5F7;
+
+    color: #8B95A1;
+
+
+}
+.selectedIcon{
+   color: #46C2C7; 
+}
