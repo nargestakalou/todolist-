@@ -1,4 +1,4 @@
-.customSelector {
+/* .customSelector {
   all: unset;
   width: 100%;
   box-sizing: border-box;
@@ -29,4 +29,52 @@
 .textColor{
     color: #2c2e30 !important;
 
+}
+.react-datepicker-popper {
+  z-index: 9999 !important;
+} */
+ .customSelector {
+  all: unset;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  inset: 0;
+}
+.wrapper {
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 9px 10px 12px;
+  color: #a8b3bf;
+  background-color: #f4f6f8;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: relative;
+}
+/*  */
+.title {
+  font-size: 16px;
+  color: #3d8fb3;
+  font-weight: bold;
+}
+.textColor {
+  color: #2c2e30 !important;
+}
+
+/* .customCalender {
+    display: none;
+} */
+  
+.customCalender:focus {
+  border: none !important;
+  outline: none !important;
+}
+.iconRight{
+    padding-right: 10px;
+}
+.date{
+    color: #2c2e30;
 }

@@ -7,6 +7,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { AiOutlineFund } from "react-icons/ai";
 import { PiAirplaneTiltLight } from "react-icons/pi";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { BsTicketPerforated } from "react-icons/bs";
 
 
 
@@ -40,7 +41,11 @@ import { HiOutlineDotsHorizontal } from "react-icons/hi";
         name:'travel',
         icon:<PiAirplaneTiltLight size={30} />
     },
-     
+     {
+        name:'default',
+        icon:<BsTicketPerforated  size={30}/>
+
+     }
 
 
 ]

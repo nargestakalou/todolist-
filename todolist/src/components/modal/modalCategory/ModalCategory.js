@@ -5,9 +5,16 @@ import CategoryItem from "../../categoryItem/CategoryItem";
 import { useEffect, useState } from "react";
 import { MdOutlineWorkOutline } from "react-icons/md";
 import { IoPersonOutline } from "react-icons/io5";
+import AddCategoryInput from "../../input/addCategoryInput/AddCategoryInput";
 
 function ModalCategory({ isOpen, onClose ,onSelect,categorySelected}) {
-  const [categoryItems, setCategoryItems] = useState([
+
+ const categoryLocal=localStorage.getItem('category')
+  const categoryLocalArray=JSON.parse(categoryLocal)
+  
+
+
+  const [categoryItems, setCategoryItems] = useState(categoryLocalArray?categoryLocalArray:[
     { id: 1, title: "Work",icon:'work' },
     { id: 2, title: "Personal",icon:'personal'  },
     {
@@ -38,15 +45,22 @@ function ModalCategory({ isOpen, onClose ,onSelect,categorySelected}) {
    
   ]);
 
+ 
+
+
+  const addCategoryHandler=(newCategory)=>{
+    setCategoryItems([...categoryItems,{
+      id:categoryItems.length+1,
+      title:newCategory,
+      icon:'default'
+    }])
+  }
 
   useEffect(() => {
     localStorage.setItem("category", JSON.stringify(categoryItems));
   }, [categoryItems]);
 
 
-const addCategoryHandler=()=>{
-
-}
 
 
   return (
@@ -61,6 +75,8 @@ const addCategoryHandler=()=>{
               <CategoryItem key={item.id} {...item}  category={item} onSelect={onSelect} categorySelected={categorySelected} />
             ))}
           </div>
+          <hr style={{margin:'30px 0'}} />
+          <AddCategoryInput categoryNewHandler={addCategoryHandler}/>
         </Modal.Body>
         <Modal.Footer style={{borderTop:'none'}}>
           

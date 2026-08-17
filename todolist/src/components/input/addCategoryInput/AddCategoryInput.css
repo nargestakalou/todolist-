@@ -7,7 +7,6 @@
   text-align: center;
   padding: 10px;
   padding-top: 14px;
-  
 }
 .title {
   font-size: 16px;
@@ -15,7 +14,7 @@
   font-weight: bold;
 }
 
-.inputStyle {
+.inputStyleCategory {
   padding-left: 50px;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -24,9 +23,29 @@
   color: #a8b3bf;
   background-color: #f4f6f8;
   border-radius: 15px;
+  outline: none;
 }
-
-.inputArea:focus{
+.inputStyleCategory:hover,.inputStyleCategory:focus{
+  border: none ;
   outline: none;
   box-shadow: none;
+    border: 1px solid #45c1b4 ;
+
+}
+.display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.addBtnCategory {
+  all: unset;
+  padding: 15px;
+  background: #4fd4c7;
+  border-radius: 15px;
+  color: white;
+  transition: all .5s;
+}
+.addBtnCategory:hover{
+  background: #45c1b4;
+
 }

@@ -33,7 +33,10 @@ function CategoryItem(props){
 
         </button>
     
-       </div>)
+       </div>
+       
+    
+    )
 }
 
 export default CategoryItem

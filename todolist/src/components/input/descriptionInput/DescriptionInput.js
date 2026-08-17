@@ -1,8 +1,10 @@
+import { useState } from "react";
 import "./DescriptionInput.css";
 import Form from "react-bootstrap/Form";
 import { BsTextParagraph } from "react-icons/bs";
 
-function DescriptionInput() {
+function DescriptionInput({onClick}) {
+  
   return (
     <>
       <Form.Group className="mb-3 mt-2" controlId="formGridAddress1">
@@ -13,8 +15,10 @@ function DescriptionInput() {
           </i>
           <Form.Control
             placeholder="Add more deftails about this task..."
-            className="inputStyle"
+            className="inputStyle inputArea"
             as="textarea"
+            
+            onChange={(e)=>onClick(e.target.value)}
           />
         </div>
       </Form.Group>

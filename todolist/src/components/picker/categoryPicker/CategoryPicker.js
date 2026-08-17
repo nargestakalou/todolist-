@@ -21,7 +21,7 @@ const modalHandler=()=>{
   return (
     <>
       <p className="title">Category</p>
-      <button className="customSelector" type="button" onClick={modalHandler}>
+      <button className="customSelectorCategory" type="button" onClick={modalHandler}>
         <div className="leftSide">
           <span className="icons">
             {categorySelected ? selectIcon : <MdOutlineCategory size={25} />}

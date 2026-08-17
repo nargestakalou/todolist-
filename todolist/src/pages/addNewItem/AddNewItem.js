@@ -5,21 +5,27 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { IoMdTime } from "react-icons/io";
 import { LuClipboardList } from "react-icons/lu";
 import { HiPlusSmall } from "react-icons/hi2";
 import TitleInput from "../../components/input/titleInput/TitleInput";
 import DescriptionInput from "../../components/input/descriptionInput/DescriptionInput";
 import CategoryPicker from "../../components/picker/categoryPicker/CategoryPicker";
 import { useState } from "react";
-import DatePicker from "../../components/picker/datePicker/DatePIcker";
 import StartTimePicker from "../../components/picker/startTimePicker/StartTimePicker";
 import EndTimePicker from "../../components/picker/endTimePicker/EndTimePicker";
 import Reminder from "../../components/picker/reminder/Reminder";
-
+import CustomSelectedDate from "../../components/picker/customSelectedDate/CustomSelectedDate";
+import {setHours,setMinutes} from 'date-fns'
 function AddNewItem() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [titleTask, setTitleTask] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [startTime, setStartTime] = useState( setHours(setMinutes(new Date(), 30), 16), );
+   const[reminder,setReminder]=useState(null) 
+  const [endTime, setEndTime] = useState(
+    setHours(setMinutes(new Date(), 30), 16),
+  );
+  const [description,setDescription]=useState('')
 
   const selectedCategoryHandler = (category) => {
     setSelectedCategory(category);
@@ -27,6 +33,30 @@ function AddNewItem() {
   const titleTaskHandler = (title) => {
     setTitleTask(title);
   };
+  const selectedDateHandler = (date) => {
+    setStartDate(date);
+  };
+  const startTimeHandler = (time) => {
+    setStartTime(time);
+  };
+  const endTimeHandler=(endTime)=>{
+    setEndTime(endTime)
+  }
+  const reminderHandler=(reminderSet)=>{
+setReminder(reminderSet)
+  }
+const descriptionHandler=(desc)=>{
+  setDescription(desc)
+}
+const [tasks,setTasks]=useState(localStorage.getItem('tasks')?JSON.parse(localStorage.getItem('tasks')) : [])
+
+const addTaskItemHandler=()=>{
+  const newTask={titleTask,selectedCategory,startDate,startTime,endTime,description,reminder}
+  const newTasks=[...tasks,newTask]
+  setTasks(newTasks)
+  localStorage.setItem('tasks',JSON.stringify(newTasks))
+}
+
 
   return (
     <>
@@ -56,24 +86,34 @@ function AddNewItem() {
 
               <Row className="mb-3 my-2">
                 <Col>
-                  <DatePicker />
+                  <CustomSelectedDate
+                    onSelect={selectedDateHandler}
+                    date={startDate}
+                  />
                 </Col>
                 <Col>
-                  <StartTimePicker />
+                  <StartTimePicker
+                    onSelect={startTimeHandler}
+                    time={startTime}
+                    title={'Start time'}
+                  />
                 </Col>
               </Row>
               <Row>
                 <Col>
-                <EndTimePicker/>
-                
+                <StartTimePicker
+                    onSelect={endTimeHandler}
+                    time={endTime}
+                    title={'End time(optional)'}
+                  />
                 </Col>
                 <Col>
-                <Reminder/>
+                <Reminder onSelect={reminderHandler} setReminder={reminder}  />
                 </Col>
               </Row>
-              <DescriptionInput />
+              <DescriptionInput onClick={descriptionHandler} dec={description} />
 
-              <Button className="buttonStyle">
+              <Button className="buttonStyle" onClick={addTaskItemHandler}>
                 {" "}
                 <HiPlusSmall size={"30px"} /> Add Task
               </Button>

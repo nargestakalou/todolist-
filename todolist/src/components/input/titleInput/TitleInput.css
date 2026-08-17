@@ -28,3 +28,7 @@ i {
   color: #a8b3bf;
 
 }
+.inputStyle:focus{
+  border: 1px solid #45c1b4;
+
+}

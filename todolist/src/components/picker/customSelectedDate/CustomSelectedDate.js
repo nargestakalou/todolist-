@@ -1,24 +1,23 @@
-import "./StartTimePicker.css";
-import { IoMdTime } from "react-icons/io";
+import "./CustomSelectedDate.css";
+import { CiCalendarDate } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import DatePicker from "react-datepicker";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import { setHours, setMinutes } from "date-fns";
 
-function StartTimePicker({ time, onSelect, title }) {
+function CustomSelectedDate({ date, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   const openCalenderHandler = () => {
     setIsOpen(true);
   };
-  const handler = (timeSelected) => {
-    onSelect(timeSelected);
+  const handler = (dateSelected) => {
+    onSelect(dateSelected);
     setIsOpen(false);
   };
 
   return (
     <>
-      <p className="title">{title}</p>
+      <p className="title">Date</p>
       <div className="wrapper">
         <button
           className="customSelector"
@@ -27,27 +26,19 @@ function StartTimePicker({ time, onSelect, title }) {
         >
           <div className="leftSide">
             <span className="icons" style={{ paddingLeft: "10px" }}>
-              <IoMdTime size={25} />
+              <CiCalendarDate size={25} />
             </span>
           </div>
-          <div className="date">
-            {time.toLocaleTimeString([], {
-              hour: "numeric",
-              minute: "2-digit",
-            })}
-          </div>
+          <div className="date">{date.toLocaleDateString("en-GB")}</div>
 
           <span className="iconRight">
             <IoIosArrowDown size={"20"} />
           </span>
         </button>
         <DatePicker
-          selected={time}
-          dateFormat={"h:mm aa"}
+          selected={date}
+          dateFormat={"dd/MM/yyyy"}
           onChange={handler}
-          showTimeSelect
-          showTimeSelectOnly
-          timeIntervals={30}
           className="customCalender"
           open={isOpen}
         />
@@ -56,4 +47,4 @@ function StartTimePicker({ time, onSelect, title }) {
   );
 }
 
-export default StartTimePicker;
+export default CustomSelectedDate;

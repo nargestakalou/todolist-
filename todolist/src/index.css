@@ -9,5 +9,7 @@ a{
 }
 input,button{
         box-sizing: border-box !important;
+        box-shadow: none !important;
+        outline: none !important;
 
 }
