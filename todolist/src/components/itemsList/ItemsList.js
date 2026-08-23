@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./ItemsList.css";
 import { FaCircle } from "react-icons/fa";
+import { useState } from "react";
+import { jsxs } from "react/jsx-runtime";
 
 function ItemsList(props) {
   return (
@@ -12,7 +14,7 @@ function ItemsList(props) {
         <h5>{props.title}</h5>
         <div className="itemCount">
             <FaCircle size={'12px'}/>
-            <span> <b >24</b>Items </span>
+            <span> <b >{props.length}</b>Items </span>
         </div>
       </div>
     </Link>

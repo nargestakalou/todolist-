@@ -1,0 +1,31 @@
+.containerGroup {
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.buttonsContainer {
+  width: 100%;
+  display: flex !important;
+  overflow: hidden;
+  border-radius: 15px;
+
+  box-shadow:
+    rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.buttonsContainer .btn {
+  flex: 1;
+  min-width: 0;
+  padding: 8px !important;
+  background: #fff;
+  color: black;
+  text-align: center;
+  border: none;
+  border-radius: 0;
+}
+.buttonsContainer .btn:hover,
+.buttonsContainer .btn:focus {
+  color: #fff;
+  background-color: #46c2c7;
+}

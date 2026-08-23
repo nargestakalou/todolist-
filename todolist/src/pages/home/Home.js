@@ -18,6 +18,8 @@ function Home() {
       id: 1,
       class: "backgroundColor",
       classIcon: "customIcon",
+      length: JSON.parse(localStorage.getItem('tasks')).length
+
     },
     {
       title: "Personal Stuff",

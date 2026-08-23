@@ -1,0 +1,138 @@
+.containerTaskCard {
+  border-radius: 15px;
+  border-left: 4px solid purple;
+  padding: 15px 0 15px 15px;
+  margin-top: 10px;
+  box-shadow:
+    rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+.contentTaskCard {
+  display: flex;
+  align-items: start;
+}
+.contentIconTask {
+  color: #a8b3bf;
+  padding-right: 10px;
+}
+
+
+.contentRightTask{
+  flex: 1;
+}
+.contentRightTask h5 {
+  font-weight: 600;
+}
+.contentDateTask {
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+}
+.dateTask {
+  padding-left: 6px;
+  color: rgb(109, 214, 205);
+  font-weight: 600;
+  font-size: 16px;
+}
+.contentLeftDateTask {
+  display: flex;
+  align-items: center;
+
+  flex: 1;
+}
+
+.contentRightDateTask {
+  display: flex;
+  align-items: center;
+  width: 190px;
+  gap: 10px;
+}
+.categoryTask {
+  width: 110px;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 25px;
+}
+.styleIconThreeDots {
+  margin-left: 10px;
+}
+.contentReminder {
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+}
+.color1 {
+  background-color: #e8f8f8;
+
+  color: #2ca8b3;
+}
+.border1 {
+  border-left: 4px solid #2ca8b3;
+}
+.color2 {
+  background-color: #eaf9f5;
+
+  color: #49b88a;
+}
+.border2 {
+  border-left: 4px solid #49b88a;
+}
+
+.color3 {
+  background-color: #f3ecff;
+
+  color: #9b6ef3;
+}
+.border3 {
+  border-left: 4px solid #9b6ef3;
+}
+
+.color4 {
+  background-color: #ffedee;
+
+  color: #f26d6d;
+}
+.border4 {
+  border-left: 4px solid #f26d6d;
+}
+
+.color5 {
+  background-color: #fff4e3;
+
+  color: #f2a93b;
+}
+.border5 {
+  border-left: 4px solid #f2a93b;
+}
+
+.color6 {
+  background-color: #eef9e9;
+
+  color: #6abf4b;
+}
+.border6 {
+  border-left: 4px solid #6abf4b;
+}
+
+.color7 {
+  background-color: #eaf4ff;
+
+  color: #4a90e2;
+}
+.border7 {
+  border-left: 4px solid #4a90e2;
+}
+
+.color8 {
+  background-color: #f3f5f7;
+
+  color: #8b95a1;
+}
+.border8 {
+  border-left: 4px solid #8b95a1;
+}
+
+.selectedIcon {
+  color: #46c2c7;
+}

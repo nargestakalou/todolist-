@@ -70,7 +70,7 @@ function ModalCategory({ isOpen, onClose ,onSelect,categorySelected}) {
           <Modal.Title>Select Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="buttonsContainer">
+          <div className="buttonsContainerModal">
             {categoryItems.map((item) => (
               <CategoryItem key={item.id} {...item}  category={item} onSelect={onSelect} categorySelected={categorySelected} />
             ))}

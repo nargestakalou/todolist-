@@ -1,0 +1,18 @@
+.buttonTask button{
+    all: unset;
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: all .5s;
+    cursor: pointer;
+}
+.buttonTask:hover,.buttonTask:focus{
+    color: #46c2c7;
+
+
+}
+.active{
+    color: #46c2c7 !important;
+}

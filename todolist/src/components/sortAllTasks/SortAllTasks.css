@@ -1,0 +1,45 @@
+.ContainerSortAllTasks{
+    padding: 0 20px;
+    
+}
+.dropdown:hover{
+    border: none !important;
+    transform: none;
+}
+.dropdown .btn {
+    width: 100% !important;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    border: 2px solid transparent;
+
+    background: #fff;
+    color: black;
+     box-shadow:
+    rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px !important;
+    padding:10px ;
+    transition: all .5s;
+    transform: none !important;
+    
+
+}
+.dropdown .btn:hover{
+background-color: #46c2c7;
+border-color: #46c2c7;
+    transform: none !important;
+
+}
+.dropdown-menu{
+    overflow: hidden;
+    width: 100%;
+    border-left: 7px solid #46c2c7;
+}
+.dropdown-item:hover{
+    background-color: #46c2c7;
+
+}

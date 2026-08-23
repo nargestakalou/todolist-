@@ -49,7 +49,7 @@ function ModalReminder({ onSelect, setReminder, onClose, isOpen }) {
           <Modal.Title>Select reminder time</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="buttonsContainer">
+          <div className="buttonsContainerModal">
             {reminderItems.map(item=>(
               <ReminderItem key={item.id}   {...item} onSelect={ ()=>onSelect(item)} setReminder={setReminder} />
             ))}
