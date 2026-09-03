@@ -12,20 +12,23 @@ import DescriptionInput from "../../components/input/descriptionInput/Descriptio
 import CategoryPicker from "../../components/picker/categoryPicker/CategoryPicker";
 import { useState } from "react";
 import StartTimePicker from "../../components/picker/startTimePicker/StartTimePicker";
-import EndTimePicker from "../../components/picker/endTimePicker/EndTimePicker";
 import Reminder from "../../components/picker/reminder/Reminder";
 import CustomSelectedDate from "../../components/picker/customSelectedDate/CustomSelectedDate";
-import {setHours,setMinutes} from 'date-fns'
+import { setHours, setMinutes } from "date-fns";
+import Swal from "sweetalert2";
+
 function AddNewItem() {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [titleTask, setTitleTask] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [titleTask, setTitleTask] = useState("");
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setStartTime] = useState( setHours(setMinutes(new Date(), 30), 16), );
-   const[reminder,setReminder]=useState(null) 
+  const [startTime, setStartTime] = useState(
+    setHours(setMinutes(new Date(), 30), 16),
+  );
+  const [reminder, setReminder] = useState(null);
   const [endTime, setEndTime] = useState(
     setHours(setMinutes(new Date(), 30), 16),
   );
-  const [description,setDescription]=useState('')
+  const [description, setDescription] = useState("");
 
   const selectedCategoryHandler = (category) => {
     setSelectedCategory(category);
@@ -39,24 +42,57 @@ function AddNewItem() {
   const startTimeHandler = (time) => {
     setStartTime(time);
   };
-  const endTimeHandler=(endTime)=>{
-    setEndTime(endTime)
-  }
-  const reminderHandler=(reminderSet)=>{
-setReminder(reminderSet)
-  }
-const descriptionHandler=(desc)=>{
-  setDescription(desc)
-}
-const [tasks,setTasks]=useState(localStorage.getItem('tasks')?JSON.parse(localStorage.getItem('tasks')) : [])
+  const endTimeHandler = (endTime) => {
+    setEndTime(endTime);
+  };
+  const reminderHandler = (reminderSet) => {
+    setReminder(reminderSet);
+  };
+  const descriptionHandler = (desc) => {
+    setDescription(desc);
+  };
+  const [tasks, setTasks] = useState(
+    localStorage.getItem("tasks")
+      ? JSON.parse(localStorage.getItem("tasks"))
+      : [],
+  );
 
-const addTaskItemHandler=()=>{
-  const newTask={titleTask,selectedCategory,startDate,startTime,endTime,description,reminder}
-  const newTasks=[...tasks,newTask]
-  setTasks(newTasks)
-  localStorage.setItem('tasks',JSON.stringify(newTasks))
-}
+  const addTaskItemHandler = () => {
+     console.log("REMINDER STATE:", reminder);
+    const newTask = {
+      titleTask,
+      selectedCategory,
+      startDate,
+      startTime,
+      endTime,
+      description,
+      reminder,
+      id: crypto.randomUUID(),
+      isCompleted: false,
+      isFavorite: false,
+    };
+         console.log("REMINDER STATE:", reminder);
 
+    const newTasks = [...tasks, newTask];
+console.log("NEW TASKS:", newTasks);    
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+
+    Swal.fire({
+      icon: "success",
+      title: "Your task has been saved",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setDescription("");
+
+    setSelectedCategory("");
+    setTitleTask("");
+    setStartDate(new Date());
+    setStartTime(setHours(setMinutes(new Date(), 30), 16));
+    setReminder(null);
+    setEndTime(setHours(setMinutes(new Date(), 30), 16));
+  };
 
   return (
     <>
@@ -95,23 +131,26 @@ const addTaskItemHandler=()=>{
                   <StartTimePicker
                     onSelect={startTimeHandler}
                     time={startTime}
-                    title={'Start time'}
+                    title={"Start time"}
                   />
                 </Col>
               </Row>
               <Row>
                 <Col>
-                <StartTimePicker
+                  <StartTimePicker
                     onSelect={endTimeHandler}
                     time={endTime}
-                    title={'End time(optional)'}
+                    title={"End time(optional)"}
                   />
                 </Col>
                 <Col>
-                <Reminder onSelect={reminderHandler} setReminder={reminder}  />
+                  <Reminder onSelect={reminderHandler} setReminder={reminder} />
                 </Col>
               </Row>
-              <DescriptionInput onClick={descriptionHandler} dec={description} />
+              <DescriptionInput
+                onClick={descriptionHandler}
+                descrip={description}
+              />
 
               <Button className="buttonStyle" onClick={addTaskItemHandler}>
                 {" "}

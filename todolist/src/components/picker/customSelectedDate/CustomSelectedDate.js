@@ -29,7 +29,7 @@ function CustomSelectedDate({ date, onSelect }) {
               <CiCalendarDate size={25} />
             </span>
           </div>
-          <div className="date">{date.toLocaleDateString("en-GB")}</div>
+          <div className="date">{new Date(date).toLocaleDateString("en-GB")}</div>
 
           <span className="iconRight">
             <IoIosArrowDown size={"20"} />

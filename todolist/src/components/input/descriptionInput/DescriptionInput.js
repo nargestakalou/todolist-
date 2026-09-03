@@ -3,7 +3,7 @@ import "./DescriptionInput.css";
 import Form from "react-bootstrap/Form";
 import { BsTextParagraph } from "react-icons/bs";
 
-function DescriptionInput({onClick}) {
+function DescriptionInput({onClick,descrip}) {
   
   return (
     <>
@@ -17,7 +17,7 @@ function DescriptionInput({onClick}) {
             placeholder="Add more deftails about this task..."
             className="inputStyle inputArea"
             as="textarea"
-            
+            value={descrip}
             onChange={(e)=>onClick(e.target.value)}
           />
         </div>

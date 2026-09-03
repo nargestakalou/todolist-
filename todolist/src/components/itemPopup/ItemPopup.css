@@ -1,0 +1,26 @@
+.itemPopup{
+    padding: 0 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+
+}
+.titlePopup{
+    padding-bottom: 10px;
+    flex: 1;
+    border-bottom: 1px solid lightgray;
+}
+.iconPopup{
+    margin-right: 12px;
+    padding-bottom: 10px;
+}
+.red{
+    color: red !important;
+}
+.titlePopup:hover{
+    border-bottom: 1px solid rgb(109, 214, 205) ;
+}
+.itemPopup:hover{
+    color: rgb(109, 214, 205);
+}

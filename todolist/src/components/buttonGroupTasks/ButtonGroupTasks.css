@@ -2,6 +2,7 @@
   width: 100%;
   padding: 0 20px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .buttonsContainer {
@@ -28,4 +29,8 @@
 .buttonsContainer .btn:focus {
   color: #fff;
   background-color: #46c2c7;
+}
+.activeBtn {
+  color: #fff !important;
+  background-color: #46c2c7 !important;
 }

@@ -31,7 +31,7 @@ function StartTimePicker({ time, onSelect, title }) {
             </span>
           </div>
           <div className="date">
-            {time.toLocaleTimeString([], {
+            {new Date(time).toLocaleTimeString([], {
               hour: "numeric",
               minute: "2-digit",
             })}
