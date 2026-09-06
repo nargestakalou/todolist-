@@ -32,10 +32,13 @@ function Personal() {
     );
     setActiveBtn("All");
     setIsActiveButton("All Tasks");
+    setSortChange("default");
   };
   const activePersonalTasks = () => {
-    setIsActiveButton('')
+    setIsActiveButton("");
     setActiveBtn("Active");
+    setSortChange("default");
+
     const personalTasks = allTasks.filter(
       (task) => task.selectedCategory.title === "Personal",
     );
@@ -46,7 +49,9 @@ function Personal() {
   };
   const completedPersonalTasks = () => {
     setActiveBtn("Completed");
-    setIsActiveButton('Completed')
+    setIsActiveButton("Completed");
+    setSortChange("default");
+
     const personalTasks = allTasks.filter(
       (task) => task.selectedCategory.title === "Personal",
     );
@@ -59,10 +64,7 @@ function Personal() {
   //sort handler
 
   const sortPersonalTasksNameHandler = () => {
-    const pesonalTasks = allTasks.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    const sortTaskName = pesonalTasks.sort((a, b) =>
+    const sortTaskName = [...personalTasks].sort((a, b) =>
       a.titleTask.localeCompare(b.titleTask),
     );
 
@@ -72,10 +74,8 @@ function Personal() {
 
   const sortDateHandler = () => {
     setSortChange("Due Date");
-    const personalTasksData = allTasks.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    const sortDueDate = personalTasksData.sort((a, b) =>
+
+    const sortDueDate = [...personalTasks].sort((a, b) =>
       b.startDate.localeCompare(a.startDate),
     );
     setPersonalTasks(sortDueDate);
@@ -172,8 +172,8 @@ function Personal() {
     });
     setPersonalTasks(todayPersonalTasks);
     setIsActiveButton("Today");
-        setActiveBtn('')
-
+    setActiveBtn("");
+    setSortChange("default");
   };
 
   const UpComingHandler = () => {
@@ -199,18 +199,22 @@ function Personal() {
     });
     setPersonalTasks(upComingPersonal);
     setIsActiveButton("Upcoming");
-    setActiveBtn('')
+    setActiveBtn("");
+    setSortChange("default");
   };
-const importantHandler=()=>{
-  const allTaskLoc=[...allTasks]
-  const personalAllTask=allTaskLoc.filter(task=>task.selectedCategory.title==='Personal')
-  const importantPersonalTask=personalAllTask.filter(task=>task.isFavorite===true)
-  setPersonalTasks(importantPersonalTask)
-  setActiveBtn('')
-    setIsActiveButton('Important')
-  
-}
-
+  const importantHandler = () => {
+    const allTaskLoc = [...allTasks];
+    const personalAllTask = allTaskLoc.filter(
+      (task) => task.selectedCategory.title === "Personal",
+    );
+    const importantPersonalTask = personalAllTask.filter(
+      (task) => task.isFavorite === true,
+    );
+    setPersonalTasks(importantPersonalTask);
+    setActiveBtn("");
+    setIsActiveButton("Important");
+    setSortChange("default");
+  };
 
   return (
     <>
