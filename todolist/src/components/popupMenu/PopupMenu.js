@@ -30,7 +30,7 @@ function PopupMenu(props) {
           title={"Delete"}
           icon={<RiDeleteBin6Line size={25} />}
           color={"red"}
-          popupHandler={props.deletTaskHandler}
+          popupHandler={props.deleteTaskHandler}
           id={props.id}
         />
       </div>

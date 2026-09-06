@@ -9,7 +9,11 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { MdWorkOutline } from "react-icons/md";
 import AddItem from "../../components/addItem/AddItem";
 import AddButton from "../../components/addButton/AddButton";
+import { useState } from "react";
 function Home() {
+  const [allTasks,setAllTasks]=useState(JSON.parse(localStorage.getItem('tasks')))
+  const[personalTasks,setPersonalTasks]=useState(allTasks.filter(task=>task.selectedCategory.title==='Personal'))
+  
   const lists = [
     {
       title: "All task",
@@ -26,6 +30,7 @@ function Home() {
       icon: <IoPersonOutline />,
       link: "/personal",
       id: 2,
+      length:personalTasks.length
     },
     { title: "Ideas", icon: <GiDeadWood />, link: "/ideas", id: 3 },
     { title: "Work", icon: <MdWorkOutline />, link: "/work", id: 4 },

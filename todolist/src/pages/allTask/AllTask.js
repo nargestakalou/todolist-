@@ -78,13 +78,12 @@ function AllTask() {
         ).getTime()>=onlyToday
       )
     })
-    console.log(upComingTasks);
     
     setTasks(upComingTasks)
     
 
   };
-  const CompletedHandler = () => {
+  const completedHandler = () => {
 
     setIsActiveButton("Completed");
     setActiveBtn("Completed");
@@ -95,7 +94,7 @@ function AllTask() {
     );
     setTasks(isCompeletedtasks);
   };
-  const ImportantHandler = () => {
+  const importantHandler = () => {
     setIsActiveButton("Important");
     const allTask=JSON.parse(localStorage.getItem('tasks'))
     const isFavoritetasks=allTask.filter(task=>task.isFavorite===true)
@@ -115,18 +114,12 @@ function AllTask() {
   const sortDueDateHandler = () => {
     const newTasks = [...tasks];
     const newSortDueDate = newTasks.sort((a, b) =>
-      a.startDate.localeCompare(b.startDate),
+      b.startDate.localeCompare(a.startDate),
     );
     setTasks(newSortDueDate);
     setSortChange("Due date");
   };
 
-  // useEffect(()=>{
-  //   const newTasks=[...tasks]
-  //   const newTasksCategory=newTasks.filter(task=>task.selectedCategory.title==categorySelected)
-  //   setTasks(newTasksCategory)
-  // },
-  // [categorySelected])
 
   const categoryTasksHandler = (categoryName) => {
     setSelectedCategory(categoryName);
@@ -160,7 +153,7 @@ function AllTask() {
     setTimeout(()=>setShowToast(false),5000)
 
   };
-const deletTaskHandler=(taskId)=>{
+const deleteTaskHandler=(taskId)=>{
   Swal.fire({
     title:'Are you sure?',
     icon:'warning',
@@ -211,6 +204,7 @@ setSelectedTaskEdit(selectedTask)
         sortDateHandler={sortDueDateHandler}
         count={tasks.length}
         categoryHandler={categoryTasksHandler}
+
       />
       <Container className="mt-5 margin" style={{ maxWidth: "800px" }}>
         <Row>
@@ -220,7 +214,7 @@ setSelectedTaskEdit(selectedTask)
             <ButtonGroupTasks
               onClickAllTasks={allTasksHandler}
               onClickActiveTasks={activeBtnHandler}
-              onClickCompleted={CompletedHandler}
+              onClickCompleted={completedHandler}
               ative={activeBtn}
             />
           </Col>
@@ -248,24 +242,20 @@ setSelectedTaskEdit(selectedTask)
                     {...task}
                     isCompletedhandler={isCompletedhandler}
                     isFavoriteHandler={isFavoriteHandler}
-                    deletTaskHandler={deletTaskHandler}
+                    deleteTaskHandler={deleteTaskHandler}
                     editTaskHandler={editTaskHandler}
                   />
                 </Col>
               ))}
-          {/* {tasks.map((task) => (
-            <Col key={task.length}>
-              <TaskCard {...task} />
-            </Col>
-          ))} */}
+         
         </Row>
       </Container>
       <ButtonsAllTasks
         onClickToday={todayTaskaHandler}
         onClickAllTasks={allTasksHandler}
         onClickUpcoming={UpComingHandler}
-        onClickCompleted={CompletedHandler}
-        onClickImportant={ImportantHandler}
+        onClickCompleted={completedHandler}
+        onClickImportant={importantHandler}
         isActive={isActiveButton}
       />
 

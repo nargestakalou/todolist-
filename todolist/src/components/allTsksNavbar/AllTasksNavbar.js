@@ -12,7 +12,8 @@ import { useState } from "react";
 function AllTasksNavbar(props) {
   const expand = "md";
 const[category,setCategory]=useState(JSON.parse(localStorage.getItem('category')))
-console.log(category);
+console.log(props);
+
   return (
     <>
       <Navbar
@@ -35,7 +36,7 @@ console.log(category);
             <HiDotsHorizontal size={40} />
           </Navbar.Brand >
           <div className="titleNavbar">
-            <h2>All Tasks</h2>
+            <h2> All Tasks</h2>
             <span className="countStyle">{props.count} </span>
           </div>
           <Navbar.Toggle

@@ -107,7 +107,7 @@ return ()=>{
                 <BsThreeDots size={30} />
 
               </span>
-                      {isOpenPopup&&<PopupMenu isCompletedhandler={props.isCompletedhandler} id={props.id} isFavoriteHandler={props.isFavoriteHandler} deletTaskHandler={props.deletTaskHandler} editTaskHandler={props.editTaskHandler}  editTaskHandler={props.editTaskHandler} />}
+                      {isOpenPopup&&<PopupMenu isCompletedhandler={props.isCompletedhandler} id={props.id} isFavoriteHandler={props.isFavoriteHandler} deleteTaskHandler={props.deleteTaskHandler} editTaskHandler={props.editTaskHandler}  editTaskHandler={props.editTaskHandler} />}
 
             </div>
           </div>
