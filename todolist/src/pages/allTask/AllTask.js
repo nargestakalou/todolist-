@@ -19,28 +19,6 @@ function AllTask() {
   const [showToast, setShowToast] = useState(false);
   const [contentToast, setContentToast] = useState("");
   const [selectedTaskEdit, setSelectedTaskEdit] = useState(null);
-  const todayTaskaHandler = () => {
-    const today = new Date();
-    const todayOnly = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate(),
-    );
-    const todayTasks = tasks.filter((task) => {
-      const taskDate = new Date(task.startDate);
-      return (
-        new Date(
-          taskDate.getFullYear(),
-          taskDate.getMonth(),
-          taskDate.getDate(),
-        ).getTime() === todayOnly.getTime()
-      );
-    });
-
-    setTasks(todayTasks);
-    setIsActiveButton("Today");
-    setSortChange("default");
-  };
 
   //buttonsBottom
   const allTasksHandler = () => {
@@ -52,7 +30,7 @@ function AllTask() {
   };
   const activeBtnHandler = () => {
     setActiveBtn("Active");
-    setIsActiveButton('')
+    setIsActiveButton('All Tasks')
     setSortChange("default");
 
     const allTasks = JSON.parse(localStorage.getItem("tasks"));
@@ -60,34 +38,8 @@ function AllTask() {
     const isActiveTasks = allTasks.filter((task) => task.isCompleted === false);
     setTasks(isActiveTasks);
   };
-  const UpComingHandler = () => {
-    setIsActiveButton("Upcoming");
-    setSortChange("default");
-
-    const today = new Date();
-    const onlyToday = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate(),
-    ).getTime();
-
-    const allTasks = JSON.parse(localStorage.getItem("tasks"));
-
-    const upComingTasks = allTasks.filter((task) => {
-      const taskDate = new Date(task.startDate);
-      return (
-        new Date(
-          taskDate.getFullYear(),
-          taskDate.getMonth(),
-          taskDate.getDate(),
-        ).getTime() >= onlyToday
-      );
-    });
-
-    setTasks(upComingTasks);
-  };
   const completedHandler = () => {
-    setIsActiveButton("Completed");
+    setIsActiveButton("All Tasks");
     setActiveBtn("Completed");
     setSortChange("default");
 
@@ -97,14 +49,6 @@ function AllTask() {
       (task) => task.isCompleted === true,
     );
     setTasks(isCompeletedtasks);
-  };
-  const importantHandler = () => {
-    setIsActiveButton("Important");
-    setSortChange("default");
-
-    const allTask = JSON.parse(localStorage.getItem("tasks"));
-    const isFavoritetasks = allTask.filter((task) => task.isFavorite === true);
-    setTasks(isFavoritetasks);
   };
   //sortHandle
   const sortTasksNameHandler = () => {
@@ -187,6 +131,74 @@ function AllTask() {
     });
   };
 
+
+  //buttonsBottomHandler
+    const filterHandler = (title) => {
+
+const today=new Date()
+const onlyToday=new Date(
+  today.getFullYear(),
+  today.getMonth(),
+  today.getDate()
+)
+
+
+    setSortChange("default");
+    const allTasksBase=JSON.parse(localStorage.getItem('tasks'))
+    
+    let filteredTasks = [...allTasksBase];
+    if (activeBtn === "All"){
+       filteredTasks = [...filteredTasks];
+       setIsActiveButton('All Tasks')
+      
+      }
+    if (activeBtn === "Active")
+      filteredTasks = filteredTasks.filter(  (task) => task.isCompleted === false,);
+    if (activeBtn === "Completed")
+      filteredTasks = filteredTasks.filter((task) => task.isCompleted === true);
+    if(title==='All Tasks'){
+      filteredTasks=[...filteredTasks]
+      setIsActiveButton('All Tasks')
+    }
+    if(title==='Today'){
+      filteredTasks=filteredTasks.filter(task=>{
+        const taskDate=new Date(task.startDate)
+        return(
+          new Date(
+            taskDate.getFullYear(),
+            taskDate.getMonth(),
+            taskDate.getDate()
+          ).getTime()===onlyToday.getTime()
+        )
+      })
+      setIsActiveButton('Today')
+
+    }
+    if(title==='Upcoming'){
+      filteredTasks=filteredTasks.filter(task=>{
+        const taskDate=new Date(task.startDate)
+        return(
+          new Date(
+            taskDate.getFullYear(),
+            taskDate.getMonth(),
+            taskDate.getDate()
+          ).getTime()>= onlyToday.getTime()
+        )
+      })
+      setIsActiveButton('Upcoming')
+    }
+    if(title==='Completed'){
+      filteredTasks=filteredTasks.filter(task=>task.isCompleted===true)
+      setIsActiveButton('Completed')
+    }
+    if(title==='Favorite'){
+      filteredTasks=filteredTasks.filter(task=>task.isFavorite===true)
+      setIsActiveButton('Favorite')
+    }
+    setTasks(filteredTasks)
+  };
+
+
   return (
     <>
       <AllTasksNavbar
@@ -204,7 +216,7 @@ function AllTask() {
               onClickAllTasks={allTasksHandler}
               onClickActiveTasks={activeBtnHandler}
               onClickCompleted={completedHandler}
-              ative={activeBtn}
+              active={activeBtn}
             />
           </Col>
         </Row>
@@ -239,11 +251,7 @@ function AllTask() {
         </Row>
       </Container>
       <ButtonsAllTasks
-        onClickToday={todayTaskaHandler}
-        onClickAllTasks={allTasksHandler}
-        onClickUpcoming={UpComingHandler}
-        onClickCompleted={completedHandler}
-        onClickImportant={importantHandler}
+       onClick={filterHandler}
         isActive={isActiveButton}
       />
 

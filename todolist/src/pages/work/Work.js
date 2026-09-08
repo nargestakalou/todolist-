@@ -143,7 +143,7 @@ function Work() {
   };
 
   //buttonsBottom
-  const handler = (title) => {
+  const filterHandler = (title) => {
     setSortChange('default')
     const today = new Date();
     const onlyToday = new Date(
@@ -256,7 +256,7 @@ setWorkTasks(filteredTasks)
         </Row>
       </Container>
       <ButtonsAllTasks
-        onClick={handler}
+        onClick={filterHandler}
         isActive={stateBtn}
       />
       <AddButton />

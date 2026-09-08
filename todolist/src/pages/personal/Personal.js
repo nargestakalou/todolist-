@@ -35,7 +35,7 @@ function Personal() {
     setSortChange("default");
   };
   const activePersonalTasks = () => {
-    setIsActiveButton("");
+    setIsActiveButton("All Tasks");
     setActiveBtn("Active");
     setSortChange("default");
 
@@ -49,7 +49,7 @@ function Personal() {
   };
   const completedPersonalTasks = () => {
     setActiveBtn("Completed");
-    setIsActiveButton("Completed");
+    setIsActiveButton("All Tasks");
     setSortChange("default");
 
     const personalTasks = allTasks.filter(
@@ -147,79 +147,71 @@ function Personal() {
     });
   };
 
-
-
-//data
-
-
-
   //buttonsAllTasksBottom
 
-  const todayTaskHandler = () => {
-    const today = new Date();
-    const onlyToday = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate(),
-    );
-    const allTasksLocal = [...allTasks];
-    const personalTasks = allTasksLocal.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    const todayPersonalTasks = personalTasks.filter((task) => {
-      const todayTasks = new Date(task.startDate);
-      return (
-        new Date(
-          todayTasks.getFullYear(),
-          todayTasks.getMonth(),
-          todayTasks.getDate(),
-        ).getTime() === onlyToday.getTime()
-      );
-    });
-    setPersonalTasks(todayPersonalTasks);
-    setIsActiveButton("Today");
-    setActiveBtn("");
-    setSortChange("default");
-  };
+  const filterHandler = (title) => {
 
-  const UpComingHandler = () => {
-    const today = new Date();
-    const onlyToday = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate(),
-    );
-    const allTaskLoc = [...allTasks];
-    const personalTasks = allTaskLoc.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    const upComingPersonal = personalTasks.filter((task) => {
-      const dateTasks = new Date(task.startDate);
-      return (
-        new Date(
-          dateTasks.getFullYear(),
-          dateTasks.getMonth(),
-          dateTasks.getDate(),
-        ).getTime() >= onlyToday.getTime()
-      );
-    });
-    setPersonalTasks(upComingPersonal);
-    setIsActiveButton("Upcoming");
-    setActiveBtn("");
+const today=new Date()
+const onlyToday=new Date(
+  today.getFullYear(),
+  today.getMonth(),
+  today.getDate()
+)
+
+
     setSortChange("default");
-  };
-  const importantHandler = () => {
-    const allTaskLoc = [...allTasks];
-    const personalAllTask = allTaskLoc.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    const importantPersonalTask = personalAllTask.filter(
-      (task) => task.isFavorite === true,
-    );
-    setPersonalTasks(importantPersonalTask);
-    setActiveBtn("");
-    setIsActiveButton("Important");
-    setSortChange("default");
+    const personalTasksBase = allTasks.filter(
+      (task) => task.selectedCategory.title === "Personal", );
+    let filteredTasks = [...personalTasksBase];
+    if (activeBtn === "All"){
+       filteredTasks = [...filteredTasks];
+       setIsActiveButton('All Tasks')
+      
+      }
+    if (activeBtn === "Active")
+      filteredTasks = filteredTasks.filter(  (task) => task.isCompleted === false,);
+    if (activeBtn === "Completed")
+      filteredTasks = filteredTasks.filter((task) => task.isCompleted === true);
+    if(title==='All Tasks'){
+      filteredTasks=[...filteredTasks]
+      setIsActiveButton('All Tasks')
+    }
+    if(title==='Today'){
+      filteredTasks=filteredTasks.filter(task=>{
+        const taskDate=new Date(task.startDate)
+        return(
+          new Date(
+            taskDate.getFullYear(),
+            taskDate.getMonth(),
+            taskDate.getDate()
+          ).getTime()===onlyToday.getTime()
+        )
+      })
+      setIsActiveButton('Today')
+
+    }
+    if(title==='Upcoming'){
+      filteredTasks=filteredTasks.filter(task=>{
+        const taskDate=new Date(task.startDate)
+        return(
+          new Date(
+            taskDate.getFullYear(),
+            taskDate.getMonth(),
+            taskDate.getDate()
+          ).getTime()>= onlyToday.getTime()
+        )
+      })
+      setIsActiveButton('Upcoming')
+    }
+    if(title==='Completed'){
+      filteredTasks=filteredTasks.filter(task=>task.isCompleted===true)
+      setIsActiveButton('Completed')
+    }
+    if(title==='Favorite'){
+      filteredTasks=filteredTasks.filter(task=>task.isFavorite===true)
+      setIsActiveButton('Favorite')
+    }
+    setPersonalTasks(filteredTasks)
   };
 
   return (
@@ -256,14 +248,7 @@ function Personal() {
           ))}
         </Row>
       </Container>
-      <ButtonsAllTasks
-        onClickToday={todayTaskHandler}
-        onClickAllTasks={allTasksPersonalHandler}
-        onClickUpcoming={UpComingHandler}
-        onClickCompleted={completedPersonalTasks}
-        onClickImportant={importantHandler}
-        isActive={isActiveButton}
-      />
+      <ButtonsAllTasks onClick={filterHandler} isActive={isActiveButton} />
       <AddButton />
     </>
   );
