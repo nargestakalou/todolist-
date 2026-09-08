@@ -16,9 +16,9 @@ function AllTask() {
   const [sortChange, setSortChange] = useState("default");
   const [activeBtn, setActiveBtn] = useState("All");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const[showToast,setShowToast]=useState(false)
-  const [contentToast,setContentToast]=useState('')
-  const [selectedTaskEdit,setSelectedTaskEdit]=useState(null)
+  const [showToast, setShowToast] = useState(false);
+  const [contentToast, setContentToast] = useState("");
+  const [selectedTaskEdit, setSelectedTaskEdit] = useState(null);
   const todayTaskaHandler = () => {
     const today = new Date();
     const todayOnly = new Date(
@@ -39,55 +39,59 @@ function AllTask() {
 
     setTasks(todayTasks);
     setIsActiveButton("Today");
+    setSortChange("default");
   };
 
-
+  //buttonsBottom
   const allTasksHandler = () => {
     setSelectedCategory(null);
     setTasks(JSON.parse(localStorage.getItem("tasks")));
     setIsActiveButton("All Tasks");
     setActiveBtn("All");
+    setSortChange("default");
   };
   const activeBtnHandler = () => {
     setActiveBtn("Active");
+    setIsActiveButton('')
+    setSortChange("default");
 
-      const allTasks  =JSON.parse(localStorage.getItem("tasks"));
+    const allTasks = JSON.parse(localStorage.getItem("tasks"));
 
     const isActiveTasks = allTasks.filter((task) => task.isCompleted === false);
     setTasks(isActiveTasks);
   };
   const UpComingHandler = () => {
     setIsActiveButton("Upcoming");
+    setSortChange("default");
 
-    const today=new Date()
-    const onlyToday=new Date(
+    const today = new Date();
+    const onlyToday = new Date(
       today.getFullYear(),
       today.getMonth(),
-      today.getDate()
-    ).getTime()
+      today.getDate(),
+    ).getTime();
 
-     const allTasks  =JSON.parse(localStorage.getItem("tasks"));
+    const allTasks = JSON.parse(localStorage.getItem("tasks"));
 
-    const upComingTasks=allTasks.filter(task=>{
-      const taskDate=new Date(task.startDate)
-      return(
+    const upComingTasks = allTasks.filter((task) => {
+      const taskDate = new Date(task.startDate);
+      return (
         new Date(
           taskDate.getFullYear(),
           taskDate.getMonth(),
-          taskDate.getDate()
-        ).getTime()>=onlyToday
-      )
-    })
-    
-    setTasks(upComingTasks)
-    
+          taskDate.getDate(),
+        ).getTime() >= onlyToday
+      );
+    });
 
+    setTasks(upComingTasks);
   };
   const completedHandler = () => {
-
     setIsActiveButton("Completed");
     setActiveBtn("Completed");
-      const allTasks=  JSON.parse(localStorage.getItem("tasks"));
+    setSortChange("default");
+
+    const allTasks = JSON.parse(localStorage.getItem("tasks"));
 
     const isCompeletedtasks = allTasks.filter(
       (task) => task.isCompleted === true,
@@ -96,13 +100,13 @@ function AllTask() {
   };
   const importantHandler = () => {
     setIsActiveButton("Important");
-    const allTask=JSON.parse(localStorage.getItem('tasks'))
-    const isFavoritetasks=allTask.filter(task=>task.isFavorite===true)
-    setTasks(isFavoritetasks)
+    setSortChange("default");
 
-
-
+    const allTask = JSON.parse(localStorage.getItem("tasks"));
+    const isFavoritetasks = allTask.filter((task) => task.isFavorite === true);
+    setTasks(isFavoritetasks);
   };
+  //sortHandle
   const sortTasksNameHandler = () => {
     const newTasks = [...tasks];
     const newSortNameTasks = newTasks.sort((a, b) =>
@@ -114,13 +118,13 @@ function AllTask() {
   const sortDueDateHandler = () => {
     const newTasks = [...tasks];
     const newSortDueDate = newTasks.sort((a, b) =>
-      b.startDate.localeCompare(a.startDate),
+      a.startDate.localeCompare(b.startDate),
     );
     setTasks(newSortDueDate);
     setSortChange("Due date");
   };
 
-
+  //filter
   const categoryTasksHandler = (categoryName) => {
     setSelectedCategory(categoryName);
   };
@@ -128,74 +132,60 @@ function AllTask() {
   //popupHandler
 
   const isCompletedhandler = (taskId) => {
-      const allTasks  =JSON.parse(localStorage.getItem("tasks"));
+    const allTasks = JSON.parse(localStorage.getItem("tasks"));
     const completedTask = allTasks.map((task) =>
       task.id === taskId ? { ...task, isCompleted: true } : task,
     );
     setTasks(completedTask);
     localStorage.setItem("tasks", JSON.stringify(completedTask));
-        setShowToast(true)
-        setContentToast('Task completed!')
-    setTimeout(()=>setShowToast(false),5000)
-
+    setShowToast(true);
+    setContentToast("Task completed!");
+    setTimeout(() => setShowToast(false), 5000);
   };
 
   const isFavoriteHandler = (taskId) => {
-          const allTasks  =JSON.parse(localStorage.getItem("tasks"));
+    const allTasks = JSON.parse(localStorage.getItem("tasks"));
 
     const favoriteTask = allTasks.map((task) =>
       task.id === taskId ? { ...task, isFavorite: true } : task,
     );
     setTasks(favoriteTask);
     localStorage.setItem("tasks", JSON.stringify(favoriteTask));
-    setShowToast(true)
-    setContentToast('Added to favorites')
-    setTimeout(()=>setShowToast(false),5000)
-
+    setShowToast(true);
+    setContentToast("Added to favorites");
+    setTimeout(() => setShowToast(false), 5000);
   };
-const deleteTaskHandler=(taskId)=>{
-  Swal.fire({
-    title:'Are you sure?',
-    icon:'warning',
-    showCancelButton:true,
-    confirmButtonColor:'#3085d6',
-    cancelButtonColor:'#d33',
-    confirmButtonText:'Yes, delete this! '
-  }).then((result)=>{
-    if(result.isConfirmed){
-      const allTasks=JSON.parse(localStorage.getItem('tasks'))
-      const deletTask=allTasks.filter(task=>task.id!==taskId)
-      setTasks(deletTask)
-      localStorage.setItem('tasks',JSON.stringify(deletTask))
-      setShowToast(true)
-      setContentToast('Task deleted successfully!')
-      setTimeout(()=>setShowToast(false),5000)
+  const deleteTaskHandler = (taskId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete this! ",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const allTasks = JSON.parse(localStorage.getItem("tasks"));
+        const deletTask = allTasks.filter((task) => task.id !== taskId);
+        setTasks(deletTask);
+        localStorage.setItem("tasks", JSON.stringify(deletTask));
+        setShowToast(true);
+        setContentToast("Task deleted successfully!");
+        setTimeout(() => setShowToast(false), 5000);
+      }
+    });
+  };
+  const navigate = useNavigate();
+  const editTaskHandler = (taskId) => {
+    const allTasks = JSON.parse(localStorage.getItem("tasks"));
+    const selectedTask = allTasks.find((task) => task.id === taskId);
 
-    }
-  })
-}
-const navigate=useNavigate()
-const editTaskHandler=(taskId)=>{
-const allTasks=JSON.parse(localStorage.getItem('tasks'))
-const selectedTask=allTasks.find(task=>task.id===taskId)
+    setSelectedTaskEdit(selectedTask);
 
-setSelectedTaskEdit(selectedTask)
-
-  navigate('/editItem',{
-    state:selectedTask
-  })
-
-}
-
-
-  //groupButtonHandler
-
-  //  const isActiveHandler=()=>{
-  //   const newTasks=[...tasks]
-  //   const isActiveTasks=newTasks.filter(tasks=>task.isCompeleted==false)
-  //   console.log(isActiveTasks);
-
-  //  }
+    navigate("/editItem", {
+      state: selectedTask,
+    });
+  };
 
   return (
     <>
@@ -204,11 +194,10 @@ setSelectedTaskEdit(selectedTask)
         sortDateHandler={sortDueDateHandler}
         count={tasks.length}
         categoryHandler={categoryTasksHandler}
-
       />
       <Container className="mt-5 margin" style={{ maxWidth: "800px" }}>
         <Row>
-                  {showToast&&<Toast content={contentToast} />}
+          {showToast && <Toast content={contentToast} />}
 
           <Col>
             <ButtonGroupTasks
@@ -247,7 +236,6 @@ setSelectedTaskEdit(selectedTask)
                   />
                 </Col>
               ))}
-         
         </Row>
       </Container>
       <ButtonsAllTasks

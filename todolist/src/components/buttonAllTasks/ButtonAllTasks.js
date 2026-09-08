@@ -7,7 +7,7 @@ console.log(isActive);
 
   return (
     <div className="buttonTask">
-      <button onClick={onClick} className={isActive==title? 'active': ''}  >
+      <button onClick={()=>onClick(title)} className={isActive==title? 'active': ''}  >
         <span>{icon}</span>
         <span>{title}</span>
       </button>

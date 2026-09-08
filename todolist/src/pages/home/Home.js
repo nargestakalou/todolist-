@@ -11,56 +11,68 @@ import AddItem from "../../components/addItem/AddItem";
 import AddButton from "../../components/addButton/AddButton";
 import { useState } from "react";
 function Home() {
-  const [allTasks,setAllTasks]=useState(JSON.parse(localStorage.getItem('tasks')))
-  const[personalTasks,setPersonalTasks]=useState(allTasks.filter(task=>task.selectedCategory.title==='Personal'))
-  
+  const [allTasks, setAllTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")),
+  );
+  const [personalTasks, setPersonalTasks] = useState(
+    allTasks.filter((task) => task.selectedCategory.title === "Personal"),
+  );
+  const [workTasks, setWorkTasks] = useState(
+    allTasks.filter((task) => task.selectedCategory.title === "Work"),
+  );
+
   const lists = [
     {
       title: "All task",
-      icon: <FaTasks />,
+      icon: <FaTasks size={25} />,
       link: "/alltask",
       id: 1,
       class: "backgroundColor",
       classIcon: "customIcon",
-      length: JSON.parse(localStorage.getItem('tasks')).length
-
+      length: JSON.parse(localStorage.getItem("tasks")).length,
     },
     {
       title: "Personal Stuff",
-      icon: <IoPersonOutline />,
+      icon: <IoPersonOutline size={25} />,
       link: "/personal",
       id: 2,
-      length:personalTasks.length
+      length: personalTasks.length,
     },
-    { title: "Ideas", icon: <GiDeadWood />, link: "/ideas", id: 3 },
-    { title: "Work", icon: <MdWorkOutline />, link: "/work", id: 4 },
+    { title: "Ideas", icon: <GiDeadWood size={25} />, link: "/ideas", id: 3 },
+    {
+      title: "Work",
+      icon: <MdWorkOutline size={25} />,
+      link: "/work",
+      id: 4,
+      length: workTasks.length,
+    },
     {
       title: "Favourite",
-      icon: <MdOutlineFavoriteBorder />,
+      icon: <MdOutlineFavoriteBorder size={25} />,
       link: "/favourite",
       id: 5,
     },
-     
   ];
   return (
     <>
-        <MyNavbar />
-        <Container >
-          <h1 className="titleHome">My List</h1>
-          <Row className="row-cols-2 row-cols-md-4 gy-4  mx-3" style={{paddingBottom:'100px'}} >
-            {lists.map((list) => (
-              <Col key={list.id}>
-                <ItemsList {...list} />
-              </Col>
-            ))}
-           <Col >
-         <AddItem/>
-
-           </Col>
-          </Row>
-        <AddButton/>
-
-        </Container>
+      <MyNavbar />
+      <Container>
+        <h1 className="titleHome">My List</h1>
+        <Row
+          className="row-cols-2 row-cols-md-4 gy-4  mx-3"
+          style={{ paddingBottom: "100px" }}
+        >
+          {lists.map((list) => (
+            <Col key={list.id}>
+              <ItemsList {...list} />
+            </Col>
+          ))}
+          <Col>
+            <AddItem />
+          </Col>
+        </Row>
+        <AddButton />
+      </Container>
     </>
   );
 }

@@ -76,7 +76,7 @@ function Personal() {
     setSortChange("Due Date");
 
     const sortDueDate = [...personalTasks].sort((a, b) =>
-      b.startDate.localeCompare(a.startDate),
+      a.startDate.localeCompare(b.startDate),
     );
     setPersonalTasks(sortDueDate);
   };
@@ -110,7 +110,7 @@ function Personal() {
     localStorage.setItem("tasks", JSON.stringify(favoriteTasks));
     setAllTasks(favoriteTasks);
     setShowToast(true);
-    setContentToast("Added to favorites");
+    setContentToast("Added to favorites.");
     setTimeout(() => setShowToast(false), 5000);
   };
   const deleteTaskHandler = (taskId) => {
@@ -146,6 +146,12 @@ function Personal() {
       state: selectedTask,
     });
   };
+
+
+
+//data
+
+
 
   //buttonsAllTasksBottom
 
