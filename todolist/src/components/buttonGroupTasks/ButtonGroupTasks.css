@@ -34,3 +34,16 @@
   color: #fff !important;
   background-color: #46c2c7 !important;
 }
+
+.favoriteBtn .btn:hover,
+.favoriteBtn .btn:focus{
+  color: #fff;
+  background-color: #C56AA5;
+}
+
+
+
+.favoriteBtn .activeBtn{
+  color: #fff !important;
+  background-color: #C56AA5 !important;
+}

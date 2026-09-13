@@ -16,3 +16,9 @@
 .active{
     color: #46c2c7 !important;
 }
+  .favBtn:hover,   .favBtn:focus{
+    color:#A83F82 ;
+}
+.favBtn .active{
+    color: #A83F82 !important;
+}

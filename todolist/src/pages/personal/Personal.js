@@ -26,40 +26,28 @@ function Personal() {
 
   //buttonsGroup
 
-  const allTasksPersonalHandler = () => {
-    setPersonalTasks(
-      allTasks.filter((task) => task.selectedCategory.title === "Personal"),
-    );
-    setActiveBtn("All");
-    setIsActiveButton("All Tasks");
-    setSortChange("default");
-  };
-  const activePersonalTasks = () => {
-    setIsActiveButton("All Tasks");
-    setActiveBtn("Active");
-    setSortChange("default");
 
-    const personalTasks = allTasks.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    const personalActiveTasks = personalTasks.filter(
-      (task) => task.isCompleted === false,
-    );
-    setPersonalTasks(personalActiveTasks);
-  };
-  const completedPersonalTasks = () => {
-    setActiveBtn("Completed");
-    setIsActiveButton("All Tasks");
-    setSortChange("default");
+  const buttonsHandler=(selected)=>{
+    setSortChange('default')
+    setIsActiveButton('All Tasks')
+    const allTaskLoc=[...allTasks]
+    const personalTasksBase=allTaskLoc.filter(task=>task.selectedCategory.title==='Personal')
+    let filterPersonalTasks=[...personalTasksBase]
+    if(selected==='All'){
+      filterPersonalTasks=[...personalTasksBase]
+      setActiveBtn('All')
+    }
+    if(selected==='Active'){
+      filterPersonalTasks=filterPersonalTasks.filter(task=>task.isCompleted===false)
+      setActiveBtn('Active')
+    }
+    if(selected==='Completed'){
+      filterPersonalTasks=filterPersonalTasks.filter(task=>task.isCompleted===true)
+      setActiveBtn('Completed')
+    }
+    setPersonalTasks(filterPersonalTasks)
 
-    const personalTasks = allTasks.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    const personalCompletedTasks = personalTasks.filter(
-      (task) => task.isCompleted === true,
-    );
-    setPersonalTasks(personalCompletedTasks);
-  };
+  }
 
   //sort handler
 
@@ -222,9 +210,7 @@ const onlyToday=new Date(
           {showToast && <Toast content={contentToast} />}
           <Col>
             <ButtonGroupTasks
-              onClickAllTasks={allTasksPersonalHandler}
-              onClickActiveTasks={activePersonalTasks}
-              onClickCompleted={completedPersonalTasks}
+             onClick={buttonsHandler}
               active={activeBtn}
             />
           </Col>

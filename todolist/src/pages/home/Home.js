@@ -20,7 +20,7 @@ function Home() {
   const [workTasks, setWorkTasks] = useState(
     allTasks.filter((task) => task.selectedCategory.title === "Work"),
   );
-
+const[favoriteTasks,setFavoriteTasks]=useState(allTasks.filter(task=>task.isFavorite===true))
   const lists = [
     {
       title: "All task",
@@ -47,10 +47,11 @@ function Home() {
       length: workTasks.length,
     },
     {
-      title: "Favourite",
+      title: "Favorite",
       icon: <MdOutlineFavoriteBorder size={25} />,
-      link: "/favourite",
+      link: "/favorites",
       id: 5,
+      length:favoriteTasks.length
     },
   ];
   return (

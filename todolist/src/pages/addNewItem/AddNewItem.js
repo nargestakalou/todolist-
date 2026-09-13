@@ -16,6 +16,7 @@ import Reminder from "../../components/picker/reminder/Reminder";
 import CustomSelectedDate from "../../components/picker/customSelectedDate/CustomSelectedDate";
 import { setHours, setMinutes } from "date-fns";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function AddNewItem() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -56,7 +57,7 @@ function AddNewItem() {
       ? JSON.parse(localStorage.getItem("tasks"))
       : [],
   );
-
+const navigate= useNavigate()
   const addTaskItemHandler = () => {
      console.log("REMINDER STATE:", reminder);
     const newTask = {
@@ -92,6 +93,7 @@ console.log("NEW TASKS:", newTasks);
     setStartTime(setHours(setMinutes(new Date(), 30), 16));
     setReminder(null);
     setEndTime(setHours(setMinutes(new Date(), 30), 16));
+    navigate('/alltask')
   };
 
   return (

@@ -29,7 +29,7 @@
 
 }
 .dropdown .btn:hover{
-background-color: #46c2c7;
+background-color: rgba(70, 194, 199,.2);
 border-color: #46c2c7;
     transform: none !important;
 
@@ -42,4 +42,18 @@ border-color: #46c2c7;
 .dropdown-item:hover{
     background-color: #46c2c7;
 
+}
+
+.favoriteSort .btn:hover{
+    background-color: #FCEFF7;
+    border-color: #C56AA5;
+}
+.favoriteSort .dropdown-menu{
+        overflow: hidden;
+    width: 100%;
+    border-left: 7px solid #C56AA5;
+
+}
+.favoriteSort .dropdown-item:hover{
+    background-color: #FCEFF7;
 }

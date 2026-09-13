@@ -21,35 +21,31 @@ function AllTask() {
   const [selectedTaskEdit, setSelectedTaskEdit] = useState(null);
 
   //buttonsBottom
-  const allTasksHandler = () => {
-    setSelectedCategory(null);
-    setTasks(JSON.parse(localStorage.getItem("tasks")));
-    setIsActiveButton("All Tasks");
-    setActiveBtn("All");
-    setSortChange("default");
-  };
-  const activeBtnHandler = () => {
-    setActiveBtn("Active");
-    setIsActiveButton('All Tasks')
-    setSortChange("default");
 
-    const allTasks = JSON.parse(localStorage.getItem("tasks"));
 
-    const isActiveTasks = allTasks.filter((task) => task.isCompleted === false);
-    setTasks(isActiveTasks);
-  };
-  const completedHandler = () => {
-    setIsActiveButton("All Tasks");
-    setActiveBtn("Completed");
-    setSortChange("default");
+const buttonsHandler=(selected)=>{
+    setSortChange('default')
+  setIsActiveButton('All Tasks')
 
-    const allTasks = JSON.parse(localStorage.getItem("tasks"));
+  const newAllTasks=JSON.parse(localStorage.getItem('tasks'))
+  let allTaskLoc=[...newAllTasks]
+  if(selected==='All'){
+    allTaskLoc=[...newAllTasks]
+    setActiveBtn('All')
+  }
+  if(selected==='Active'){
+allTaskLoc=allTaskLoc.filter(task=>task.isCompleted===false)
+setActiveBtn('Active')
+  }
+  if(selected==='Completed'){
+    allTaskLoc=allTaskLoc.filter(task=>task.isCompleted===true)
+    setActiveBtn('Completed')
+  }
+  setTasks(allTaskLoc)
+}
 
-    const isCompeletedtasks = allTasks.filter(
-      (task) => task.isCompleted === true,
-    );
-    setTasks(isCompeletedtasks);
-  };
+
+
   //sortHandle
   const sortTasksNameHandler = () => {
     const newTasks = [...tasks];
@@ -213,9 +209,7 @@ const onlyToday=new Date(
 
           <Col>
             <ButtonGroupTasks
-              onClickAllTasks={allTasksHandler}
-              onClickActiveTasks={activeBtnHandler}
-              onClickCompleted={completedHandler}
+              onClick={buttonsHandler}
               active={activeBtn}
             />
           </Col>

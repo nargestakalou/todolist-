@@ -86,7 +86,7 @@ i {
     transition: all .5s;
 }
 .buttonStyle:hover{
-        background-color: rgb(60, 205, 210);
+        background-color: rgb(60, 205, 210) !important;
 
 }
 .taskIcon{

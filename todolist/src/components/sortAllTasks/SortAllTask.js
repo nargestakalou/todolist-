@@ -6,7 +6,7 @@ import { PiSortAscending } from "react-icons/pi";
 function SortAllTask(props){
     return(
         <div className="ContainerSortAllTasks">
-             <Dropdown>
+             <Dropdown className={props.isFavorite?'dropdown favoriteSort':'dropdown'}>
       <Dropdown.Toggle  id="dropdown-basic">
 <span><PiSortAscending size={25}/></span>  
 <span>  sort by</span>  
@@ -14,8 +14,8 @@ function SortAllTask(props){
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={props.sortDateHandler} href="#/action-1">Due date</Dropdown.Item>
-        <Dropdown.Item onClick={props.sortHandler} href="#/action-2">Task name</Dropdown.Item>
+        <Dropdown.Item onClick={()=>props.sortHandler('Due date')} href="#/action-1">Due date</Dropdown.Item>
+        <Dropdown.Item onClick={()=>props.sortHandler('Task name')} href="#/action-2">Task name</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
 

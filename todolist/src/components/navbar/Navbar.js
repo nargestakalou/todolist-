@@ -33,7 +33,7 @@ function MyNavbar() {
               <Nav className="justify-content-end flex-grow-1 pe-3 customStyleLink">
                 <NavLink  to={'/'}  >Home</NavLink>
                 <NavLink  to={'/alltask'} >All Task</NavLink>
-                <NavLink to={'/favourite'}>Favourite</NavLink>
+                <NavLink to={'/favorites'}>Favorites</NavLink>
                 <NavLink to={'/ideas'}>ideas</NavLink>
 
               </Nav>

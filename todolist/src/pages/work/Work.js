@@ -29,43 +29,33 @@ function Work() {
   const navigate = useNavigate();
 
   //bouttons
-  const workTasksHandler = () => {
-    const allTasksLOc = [...allTasks];
-    const workTasksFilter = allTasksLOc.filter(
-      (task) => task.selectedCategory.title === "Work",
-    );
-    setWorkTasks(workTasksFilter);
-    setActiveBtn("All");
-    setSortChange("default");
-    setStateBtn("All Tasks");
-  };
-  const activeWorkTasksHandler = () => {
-    const allTasksLOc = [...allTasks];
-    const workTasksFilter = allTasksLOc.filter(
-      (task) => task.selectedCategory.title === "Work",
-    );
-    const activeWorkTasks = workTasksFilter.filter(
-      (task) => task.isCompleted === false,
-    );
-    setWorkTasks(activeWorkTasks);
-    setActiveBtn("Active");
-    setSortChange("default");
-    setStateBtn("All Tasks");
-  };
 
-  const completedWorkTasksHandler = () => {
-    const allTaskLoc = [...allTasks];
-    const workTasksFilter = allTaskLoc.filter(
-      (task) => task.selectedCategory.title === "Work",
-    );
-    const completedWorkTask = workTasksFilter.filter(
-      (task) => task.isCompleted === true,
-    );
-    setWorkTasks(completedWorkTask);
-    setActiveBtn("Completed");
-    setSortChange("default");
-    setStateBtn("All Tasks");
-  };
+
+const buttonsHadler=(selected)=>{
+  const allTaskLoc=[...allTasks]
+  const workTasks=allTaskLoc.filter(task=>task.selectedCategory.title==='Work')
+  let FilterWorkTasks=[...workTasks]
+  setSortChange('default')
+  setStateBtn('All Tasks')
+
+
+  if(selected==='All'){
+    FilterWorkTasks=[...workTasks]
+    setActiveBtn('All')
+    
+  }
+
+  if(selected==='Active'){
+    FilterWorkTasks=FilterWorkTasks.filter(task=>task.isCompleted===false)
+    setActiveBtn('Active')
+  }
+  if(selected==='Completed'){
+    FilterWorkTasks=FilterWorkTasks.filter(task=>task.isCompleted===true)
+    setActiveBtn('Completed')
+  }
+  setWorkTasks(FilterWorkTasks)
+}
+
 
   //sort
 
@@ -229,9 +219,7 @@ setWorkTasks(filteredTasks)
         <Row>
           <Col>
             <ButtonGroupTasks
-              onClickAllTasks={workTasksHandler}
-              onClickActiveTasks={activeWorkTasksHandler}
-              onClickCompleted={completedWorkTasksHandler}
+              onClick={buttonsHadler}
               active={activeBtn}
             />
           </Col>

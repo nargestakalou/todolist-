@@ -1,9 +1,9 @@
 import './Toast.css'
 
 
-function Toast({content}){
+function Toast({content,isFavorite}){
     return(
-        <div className="containerToast">
+        <div className= {isFavorite? 'containerToast favBorder':'containerToast'}>
             <p>{content} </p>
         </div>
     )

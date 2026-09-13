@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import "./AddButton.css";
 import { MdAdd } from "react-icons/md";
 
-function AddButton() {
+function AddButton(props) {
   return (
-    <div className="buttonContainer">
+    <div className={props.isFavorite?'buttonContainer favAddBtn':'buttonContainer'}>
       <div className="buttonAdd">
         <Link to="/addnewitem">
           <MdAdd size={'50px'} />
