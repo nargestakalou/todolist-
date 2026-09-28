@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom'
 import './AddItem.css'
 import { MdAdd } from "react-icons/md";
-
-function AddItem(){
+import { Button } from 'react-bootstrap';
+function AddItem(prop){
     return(
-        <Link to='/addnewitem'>
-        <div className="addItem">
+        
+        <div className="addItem"  onClick={prop.onClick} >
             <MdAdd size={'50px'}/>
+            <p>Add Category</p>
         </div>
         
-        </Link>
+        
     )
 }
 

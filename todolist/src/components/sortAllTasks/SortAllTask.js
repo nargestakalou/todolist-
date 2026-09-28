@@ -14,8 +14,8 @@ function SortAllTask(props){
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={()=>props.sortHandler('Due date')} href="#/action-1">Due date</Dropdown.Item>
-        <Dropdown.Item onClick={()=>props.sortHandler('Task name')} href="#/action-2">Task name</Dropdown.Item>
+        <Dropdown.Item onClick={()=>props.sortHandler('Due date')} >Due date</Dropdown.Item>
+        <Dropdown.Item onClick={()=>props.sortHandler('Task name')} >Task name</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
 

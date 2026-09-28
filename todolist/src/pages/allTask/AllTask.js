@@ -203,7 +203,7 @@ const onlyToday=new Date(
         count={tasks.length}
         categoryHandler={categoryTasksHandler}
       />
-      <Container className="mt-5 margin" style={{ maxWidth: "800px" }}>
+      <Container className="mt-5 " style={{ maxWidth: "800px" }}>
         <Row>
           {showToast && <Toast content={contentToast} />}
 
@@ -220,21 +220,31 @@ const onlyToday=new Date(
           sortDateHandler={sortDueDateHandler}
         />
 
-        <Row className=" row-cols-12 row-cols-md-1">
+        <Row className=" row-cols-12 row-cols-md-1" >
           {selectedCategory
             ? tasks
                 .filter(
                   (task) => task.selectedCategory.title === selectedCategory,
                 )
-                .map((task) => (
-                  <Col key={task.id}>
-                    <TaskCard {...task} />
+                .map((task,index) => (
+                  <Col key={task.id}
+
+                  >
+                    <TaskCard {...task} 
+                    isLast={index===tasks.length-1}
+                    isCompletedhandler={isCompletedhandler}
+                    isFavoriteHandler={isFavoriteHandler}
+                    deleteTaskHandler={deleteTaskHandler}
+                    editTaskHandler={editTaskHandler}
+                    />
                   </Col>
                 ))
-            : tasks.map((task) => (
+            : tasks.map((task,index) => (
                 <Col key={task.id}>
                   <TaskCard
                     {...task}
+                                        isLast={index===tasks.length-1}
+
                     isCompletedhandler={isCompletedhandler}
                     isFavoriteHandler={isFavoriteHandler}
                     deleteTaskHandler={deleteTaskHandler}

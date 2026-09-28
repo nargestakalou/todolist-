@@ -76,11 +76,7 @@ function Personal() {
     const completedTasks = allTasks.map((task) =>
       task.id === taskId ? { ...task, isCompleted: true } : task,
     );
-    const completedPersonalTasks = completedTasks.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
     localStorage.setItem("tasks", JSON.stringify(completedTasks));
-    setPersonalTasks(completedPersonalTasks);
     setAllTasks(completedTasks);
     setShowToast(true);
     setContentToast("Task completed!");
@@ -91,10 +87,6 @@ function Personal() {
     const favoriteTasks = allTasks.map((task) =>
       task.id === taskId ? { ...task, isFavorite: true } : task,
     );
-    const favoritePersonalTasks = favoriteTasks.filter(
-      (task) => task.selectedCategory.title === "Personal",
-    );
-    setPersonalTasks(favoritePersonalTasks);
     localStorage.setItem("tasks", JSON.stringify(favoriteTasks));
     setAllTasks(favoriteTasks);
     setShowToast(true);

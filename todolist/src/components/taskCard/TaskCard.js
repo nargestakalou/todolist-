@@ -53,27 +53,39 @@ const popupHandler=()=>{
 setIsOpenPopup(true)
 
 }
- useEffect(()=>{
-const handleClickOutside=(event)=>{
-  if(popupRef.current&& !popupRef.current.contains(event.target)){
-    setIsOpenPopup(false)
-  }
-}
-document.addEventListener('mousedown',handleClickOutside)
-return ()=>{
-  document.addEventListener('mousedown',handleClickOutside)
-}
+//  useEffect(()=>{
+// const handleClickOutside=(event)=>{
+//   if(popupRef.current&& !popupRef.current.contains(event.target)){
+//     setIsOpenPopup(false)
+//   }
+// }
+// document.addEventListener('mousedown',handleClickOutside)
+// return ()=>{
+//   document.addEventListener('mousedown',handleClickOutside)
+// }
 
- },[])
+//  },[])
 
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      setIsOpenPopup(false);
+    }
+  };
 
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
 
 
   return (
     <div
-      className={`containerTaskCard mx-3 border${props.selectedCategory.id}`}
-      style={{position:'relative'}}
+      className={`containerTaskCard mx-3 border${props.selectedCategory.color}`}
+      style={{position:'relative',marginBottom:props.isLast?'100px':'0'}}
     >
       <div className="contentTaskCard">
         <div className="contentIconTask">
@@ -100,7 +112,7 @@ return ()=>{
                               <span style={{color:'#C56AA5'}}>{props.iconFav}</span>
 
               <span
-                className={`categoryTask color${props.selectedCategory.id}`}
+                className={`categoryTask color${props.selectedCategory.color} `}
               >
                 {props.selectedCategory.title}
               </span>

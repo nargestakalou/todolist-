@@ -11,48 +11,53 @@ function ModalCategory({ isOpen, onClose ,onSelect,categorySelected}) {
 
  const categoryLocal=localStorage.getItem('category')
   const categoryLocalArray=JSON.parse(categoryLocal)
-  
+  const[newCategory,setNewCategory]=useState(JSON.parse(localStorage.getItem('categoryCarts')))
 
 
   const [categoryItems, setCategoryItems] = useState(categoryLocalArray?categoryLocalArray:[
-    { id: 1, title: "Work",icon:'work' },
-    { id: 2, title: "Personal",icon:'personal'  },
+    { color: 1, title: "Work",iconKey:'work',id:crypto.randomUUID() },
+    { color: 2, title: "Personal",iconKey:'personal',id:crypto.randomUUID()  },
     {
-      id: 3,
+      color: 3,
       title: "Study",
-      icon:'study'
+      iconKey:'study',
+      id:crypto.randomUUID()
     },
     {
-      id: 4,
+      color: 4,
       title: "Health",
-      icon:'health'
+      iconKey:'health',
+      id:crypto.randomUUID()
     },
     {
-      id: 5,
+      color: 5,
       title: "Shopping",
-      icon:'shopping'
+      iconKey:'shopping',
+      id:crypto.randomUUID()
     },
     {
-      id: 6,
+      color: 6,
       title: "Finance",
-      icon:'finance'
+      iconKey:'finance',
+      id:crypto.randomUUID()
     },
     {
-      id: 7,
+      color: 7,
       title: "Travel",
-      icon:'travel'
+      iconKey:'travel',
+      id:crypto.randomUUID()
     },
    
   ]);
 
- 
+
 
 
   const addCategoryHandler=(newCategory)=>{
     setCategoryItems([...categoryItems,{
       id:categoryItems.length+1,
       title:newCategory,
-      icon:'default'
+      iconKey:'default'
     }])
   }
 
@@ -60,6 +65,7 @@ function ModalCategory({ isOpen, onClose ,onSelect,categorySelected}) {
     localStorage.setItem("category", JSON.stringify(categoryItems));
   }, [categoryItems]);
 
+     const allCategory=[...newCategory,...categoryItems]
 
 
 
@@ -71,7 +77,7 @@ function ModalCategory({ isOpen, onClose ,onSelect,categorySelected}) {
         </Modal.Header>
         <Modal.Body>
           <div className="buttonsContainerModal">
-            {categoryItems.map((item) => (
+            {allCategory.map((item) => (
               <CategoryItem key={item.id} {...item}  category={item} onSelect={onSelect} categorySelected={categorySelected} />
             ))}
           </div>

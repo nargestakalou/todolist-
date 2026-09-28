@@ -59,20 +59,22 @@ const buttonsHadler=(selected)=>{
 
   //sort
 
-  const sortWorkTasksNameHandler = () => {
-    const sortNameTasks = [...workTasks].sort((a, b) =>
-      a.titleTask.localeCompare(b.titleTask),
-    );
-    setSortChange("Task name");
-    setWorkTasks(sortNameTasks);
-  };
-
-  const sortDateWorkTasksHandler = () => {
-    const sortDateTasks = [...workTasks].sort((a, b) =>
-      a.startDate.localeCompare(b.startDate),
-    );
-    setSortChange("Due Date");
-    setWorkTasks(sortDateTasks);
+  const sortHandler = (sortTitle) => {
+    let sortTasks = [...workTasks]
+    if(sortTitle==='default'){
+      sortTasks=[...workTasks]
+      setSortChange('default')
+    }
+    if(sortTasks==='Due date'){
+      sortTasks=sortTasks.sort((a,b)=>b.startDate.localeCompare(a.startDate))
+      setSortChange('Due date')
+    }
+    if(sortTitle==='Task name'){
+      setSortChange('Task name')
+      sortTasks=sortTasks.sort((a,b)=>a.titleTask.localeCompare(b.titleTask))
+    }
+    setWorkTasks(sortTasks)
+    
   };
 
   //popupMenu
@@ -226,8 +228,7 @@ setWorkTasks(filteredTasks)
         </Row>
         <SortAllTask
           sortTitle={sortChange}
-          sortHandler={sortWorkTasksNameHandler}
-          sortDateHandler={sortDateWorkTasksHandler}
+          sortHandler={sortHandler}
         />
         <Row>
           {workTasks.map((task) => (
