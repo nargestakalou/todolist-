@@ -12,13 +12,13 @@ function CategoryItem(props){
 
 
     const icons=categoryIcon
-    const selectIcon=icons.find(icon=>icon.name===props.icon)?.icon
+    const selectIcon=icons.find(icon=>icon.name===props.iconKey)?.icon
     
     return(
        <div className='buttonItem'>
          <button className='buttonCategory' onClick={ ()=>  props.onSelect(props.category)} >
             <div className="left">
-                <span className={`iconCategory color${props.id}`}>
+                <span className={`iconCategory color${props.id} color${props.color}`}>
                        {/* {icons.find(icon=>(
                 icon.name===props.icon&&icon.icon
                ))} */}

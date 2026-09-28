@@ -10,17 +10,29 @@ import { MdWorkOutline } from "react-icons/md";
 import AddItem from "../../components/addItem/AddItem";
 import AddButton from "../../components/addButton/AddButton";
 import { useState } from "react";
+import ModalCategoryHome from "../../components/modalCategory/ModalCategoryHome";
+import { useNavigate } from "react-router-dom";
 function Home() {
-  const [allTasks, setAllTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks")),
-  );
+  const [show, setShow] = useState(false);
+  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  const [allTasks, setAllTasks] = useState(savedTasks);
   const [personalTasks, setPersonalTasks] = useState(
-    allTasks.filter((task) => task.selectedCategory.title === "Personal"),
+    allTasks.filter((task) => task.selectedCategory?.title === "Personal"),
   );
   const [workTasks, setWorkTasks] = useState(
-    allTasks.filter((task) => task.selectedCategory.title === "Work"),
+    allTasks.filter((task) => task.selectedCategory?.title === "Work"),
   );
-const[favoriteTasks,setFavoriteTasks]=useState(allTasks.filter(task=>task.isFavorite===true))
+  const categoryCarts = JSON.parse(localStorage.getItem("categoryCarts") || []);
+  const [newCategoryCarts, setNewCategoryCarts] = useState(categoryCarts);
+
+  const [favoriteTasks, setFavoriteTasks] = useState(
+    allTasks.filter((task) => task.isFavorite === true),
+  );
+const navigate=useNavigate()
+
+
+
   const lists = [
     {
       title: "All task",
@@ -29,7 +41,7 @@ const[favoriteTasks,setFavoriteTasks]=useState(allTasks.filter(task=>task.isFavo
       id: 1,
       class: "backgroundColor",
       classIcon: "customIcon",
-      length: JSON.parse(localStorage.getItem("tasks")).length,
+      length: allTasks.length,
     },
     {
       title: "Personal Stuff",
@@ -51,9 +63,25 @@ const[favoriteTasks,setFavoriteTasks]=useState(allTasks.filter(task=>task.isFavo
       icon: <MdOutlineFavoriteBorder size={25} />,
       link: "/favorites",
       id: 5,
-      length:favoriteTasks.length
+      length: favoriteTasks.length,
     },
   ];
+
+  const openModalHandler = () => {
+    setShow(true);
+  };
+  const closeHandler = () => {
+    setShow(false);
+  };
+
+const routHandler=(selectedCart)=>{
+  navigate('/categorytasks',{
+    state:selectedCart
+  })
+  
+}
+
+
   return (
     <>
       <MyNavbar />
@@ -68,10 +96,16 @@ const[favoriteTasks,setFavoriteTasks]=useState(allTasks.filter(task=>task.isFavo
               <ItemsList {...list} />
             </Col>
           ))}
+          {categoryCarts.map((cart) => (
+            <Col>
+              <ItemsList {...cart} isCategoryCart  onClick={()=>routHandler(cart)} />
+            </Col>
+          ))}
           <Col>
-            <AddItem />
+            <AddItem onClick={openModalHandler} />
           </Col>
         </Row>
+        {show && <ModalCategoryHome show={show} onClose={closeHandler} />}
         <AddButton />
       </Container>
     </>

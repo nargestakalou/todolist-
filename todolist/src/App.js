@@ -9,6 +9,7 @@ import Personal from './pages/personal/Personal';
 import AddNewItem from './pages/addNewItem/AddNewItem';
 import EditItem from './pages/editIem/EditItem';
 import Favorites from './pages/favorites/Favorites';
+import CategoryTasks from './pages/categoryTasks/CategoryTasks';
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
       <Route path='/addnewitem' element={<AddNewItem/>}   />
       <Route path='/editItem' element={<EditItem/>}   />
       <Route  path='/favorites' element={<Favorites/>} />
+      <Route path='/categorytasks' element={<CategoryTasks/>}   />
 
     </Routes>
     

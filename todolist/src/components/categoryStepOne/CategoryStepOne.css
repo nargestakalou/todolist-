@@ -1,0 +1,91 @@
+.container{
+    padding: 15px 30px;
+    height: 700px;
+
+}
+.modalTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.titleCategory{
+    text-align: center;
+    font-size: 20px;
+      color: rgb(82, 147, 180);
+      font-weight: 700;
+      /* margin-right: 15px; */
+
+}
+
+.modalSvg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+
+
+}
+.contentIcon{
+    width: 300px;
+    text-align: center;
+      color: rgb(82, 147, 180);
+}
+.createCategory{
+    padding: 10px;
+    color: rgb(82, 147, 180);
+    font-weight: bold;
+    
+}
+.categoryName{
+    display: flex;
+    flex-direction: column;
+
+
+}
+.categoryName label{
+    margin-bottom: 10px;
+}
+.categoryName input{
+    all: unset;
+    border-radius: 20px;
+    padding: 15px 15px;
+    border: 1px solid lightgray;
+    margin-bottom: 8px;
+}
+.categoryName input:hover,.categoryName input:focus{
+    border: 1px solid rgb(109, 214, 205);
+    background-color: rgba(109, 214, 205,.2);
+}
+.categoryName input::placeholder{
+    color: lightgray;
+}
+.categoryIcon {
+    margin-bottom: 50px;
+}
+
+
+.addCategoryBtn{
+    all: unset;
+    display: block;
+    padding: 15px;
+    background-color: #46c2c7;
+    width: 100%;
+    text-align: center;
+    color:#fff ;
+    border-radius: 15px;
+    margin-top: 40px;
+    cursor: pointer;
+    transition: all .5s;
+}
+.addCategoryBtn:disabled{
+    background-color: #9Ca3af;
+}
+.icons{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    
+}
