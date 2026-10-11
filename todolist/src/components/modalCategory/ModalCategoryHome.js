@@ -33,7 +33,7 @@ const createCartHandler=()=>{
     timer:1000
 
   })
-navigate('/')
+  props.onClose()
 }
 
 
@@ -65,7 +65,7 @@ const backSpHandler=()=>{
 
     return(
         <>
-        <Modal show={props.show} onHide={props.onClose}>
+        <Modal  show={props.show} onHide={props.onClose}>
           {isStepOne? <CategoryStepOne onHide={props.onClose} inputValue={inputValue} iconHandler={selectedIconHandler} inputHandler={inputValueHandler} isNextdisabled={isNextdisabled} onClickStep={clickBtnHandler} selectedIcon={selectedIcon} />: <CategoryStepTwo inputValue={inputValue} selectedIcon={selectedIcon.icon} colorIdHandler={colorIdHandler} colorId={colorId} backSp={backSpHandler}  createCartHandler={createCartHandler} /> }
       </Modal>
         

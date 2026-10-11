@@ -40,7 +40,7 @@ function ModalReminder({ onSelect, setReminder, onClose, isOpen }) {
   ];
   return (
     <>
-      <Modal show={isOpen} onHide={onClose} className=" customModal" dialogClassName="customModalDialog">
+      <Modal show={isOpen} onHide={onClose} className=" customModalRiminder" dialogClassName="customModalDialog">
         <Modal.Header
           closeButton
           className="mx-2"

@@ -1,0 +1,26 @@
+.customModal{
+    margin: 200px auto;
+    
+}
+  .customModal .modal-dialog .modal-content{
+    width: 240px;
+    border-radius: 20px 20px 20px 20px;
+    padding: 20px;
+}
+ .customModal .itemModal{
+    padding-top: 5px;
+    padding-bottom: 14px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+        border-bottom: 1px solid transparent;
+
+    transition: border-color .3s;
+}
+.itemModal:hover{
+    border-bottom: 1px solid rgb(109, 214, 205) ;
+}
+.titleModal{
+    padding-right: 8px;
+}

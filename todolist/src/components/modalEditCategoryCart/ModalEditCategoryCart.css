@@ -1,0 +1,52 @@
+.containerEdit{
+    padding: 25px 35px;
+
+}
+.containerEdit .modalTitle{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.containerEdit .modalIcon{
+    width: 90px;
+    height: 90px;
+    color: rgb(145, 63, 223);
+    background-color:rgba(145,63,223,0.2);
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.containerEdit .titleCategory{
+    margin-bottom: 25px;
+    color: rgb(82, 147, 180);
+    font-size: 22px;
+
+
+}
+.categoryName input{
+    font-size: 20px;
+}
+.containerEdit .chooseIcon h5{
+    text-align: left ;
+
+}
+.categoryColor h5{
+    text-align: left;
+}
+.saveChangeBtn{
+    all: unset;
+    margin: 20px 0;
+    display: block;
+    width: 100%;
+    padding:     15px;
+    border-radius: 25px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+      background-color: #46c2c7;
+      color: #fff;
+      
+}

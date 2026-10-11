@@ -9,7 +9,7 @@ function IconCardCategory(props){
     return(
 <>
 
-<div className={`iconCard ${props.selected.icon==props.icon?'selected':''}`} onClick={()=>props.handler(props)}>
+<div className={`iconCard ${props.selected===props.name?'selected':''}`} onClick={()=>props.handler(props)}>
     {props.icon}
 </div>
 

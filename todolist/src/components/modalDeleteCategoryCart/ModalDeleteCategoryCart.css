@@ -1,0 +1,73 @@
+
+.modal{
+    width: 260px;
+}
+
+
+.containerModDelete{
+    padding: 15px 20px;
+
+}
+.alignIcon{
+    text-align: end ;
+    padding: 10px;
+    color: gray;
+}
+.modalIconDelete{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.modalDeleteIcon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: red;
+    background-color: rgba(255, 0, 0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.titleDeleteCategory{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.cintentDeleteCategory{
+    
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size: 16px;
+color: gray;
+}
+
+.buttonsCategoryHandler{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonsCategoryHandler button{
+    all: unset;
+    margin: 15px 0;
+    padding: 10px 50px;
+    cursor: pointer;
+    transition: all .5s;
+    font-size: 18px;
+        border-radius: 15px;
+
+
+}
+.buttonsCategoryHandler .cancleBtn{
+    background-color: rgb(229, 228, 228);
+    margin-right: 10px;
+
+}
+.buttonsCategoryHandler .deleteBtn{
+    background-color: red;
+    color: #fff;
+
+}

@@ -10,7 +10,7 @@ function CategoryStepOne(props){
     
     return(
         <>
-        <div className="container">
+        <div className="containerMod">
             <div className="modalTitle">
                 <span onClick={props.onHide}><GrFormPrevious  size={30}/></span>
                 <span className='titleCategory'>Add Category</span>

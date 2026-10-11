@@ -1,4 +1,4 @@
-.buttonAddReminder {
+ .customModalRiminder   .buttonAddReminder {
   all: unset;
   width: 100%;
   text-align: center;
@@ -8,11 +8,11 @@
   background: linear-gradient(90deg, #37c6c8, #4fd4c7);
   color: #fff;
 }
-.modal {
+ .customModalRiminder  .modal {
   overflow: hidden !important;
-
+زمس
 }
-.customModalDialog {
+.customModalRiminder .customModalDialog {
   position: fixed !important;
   bottom: 0 !important;
   transform: translateY(0%);
