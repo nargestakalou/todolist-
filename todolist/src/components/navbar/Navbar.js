@@ -34,7 +34,6 @@ function MyNavbar() {
                 <NavLink  to={'/'}  >Home</NavLink>
                 <NavLink  to={'/alltask'} >All Task</NavLink>
                 <NavLink to={'/favorites'}>Favorites</NavLink>
-                <NavLink to={'/ideas'}>ideas</NavLink>
 
               </Nav>
             </Offcanvas.Body>

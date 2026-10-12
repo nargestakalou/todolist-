@@ -15,7 +15,8 @@ function CategoryTasks(){
     const local=useLocation()
     const selectedCart=local.state
     const[isActiveButton,setIsActiveButton]=useState('All Tasks')
-    const[allTasks,setAllTasks]=useState(JSON.parse(localStorage.getItem('tasks')))
+    const saveTasks=JSON.parse(localStorage.getItem('tasks'))||[]
+    const[allTasks,setAllTasks]=useState(saveTasks)
     const filterdCategory=allTasks.filter(task=>task.selectedCategory.title===selectedCart.title)
     const[categoryTasks,setCateoryTasks]=useState(filterdCategory)
     const[activeBtn,setActiveBtn]=useState('All')

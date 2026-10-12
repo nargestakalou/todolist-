@@ -13,9 +13,8 @@ import { useNavigate } from "react-router-dom";
 
 function Work() {
   //states
-  const [allTasks, setAllTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks")),
-  );
+  const savedTasks=JSON.parse(localStorage.getItem('tasks'))||[]
+  const [allTasks, setAllTasks] = useState(savedTasks );
   const [workTasks, setWorkTasks] = useState(
     allTasks.filter((task) => task.selectedCategory.title === "Work"),
   );

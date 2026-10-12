@@ -11,7 +11,8 @@ import Toast from "../../components/toast/Toast";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 function AllTask() {
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")));
+  const seveTasks=JSON.parse(localStorage.getItem('tasks')) || []
+  const [tasks, setTasks] = useState(seveTasks);
   const [isActiveButton, setIsActiveButton] = useState("All Tasks");
   const [sortChange, setSortChange] = useState("default");
   const [activeBtn, setActiveBtn] = useState("All");

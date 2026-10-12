@@ -14,9 +14,10 @@ import Toast from "../../components/toast/Toast";
 import { useNavigate } from "react-router-dom";
 
 function Favorites() {
-  const [allTasks, setAllTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks")) || [],
-  );
+
+const saveTasks=    JSON.parse(localStorage.getItem("tasks")) || []
+
+  const [allTasks, setAllTasks] = useState(saveTasks);
   const [favoriteTasks, setFavoriteTasks] = useState(
     allTasks.filter((task) => task.isFavorite === true),
   );

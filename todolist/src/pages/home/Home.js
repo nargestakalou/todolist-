@@ -97,7 +97,6 @@ setSelectedCategory(selectedCategoryCart)
 
   setShowModal(true)
 
-  // console.log(selectedCategory);
 
 }
 
