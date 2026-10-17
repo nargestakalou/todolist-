@@ -106,7 +106,7 @@ const navigate= useNavigate()
                 <HiPlusSmall size={"30px"} />
               </div>
             </div>
-            <p className="description">Plan your work,get things done</p>
+            <p className="description">Plan your work, get things done</p>
             <p className="color">
               Add the details of your task and <br /> stay on track.
             </p>

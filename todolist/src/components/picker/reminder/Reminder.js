@@ -14,7 +14,7 @@ function Reminder({ onSelect, setReminder}) {
 
   return (
     <>
-      <p className="title">Riminder(Optional) </p>
+      <p className="title">Reminder(Optional) </p>
       <div className="wrapper " style={{ height: "50%" }}>
         <button
           className="customSelector "

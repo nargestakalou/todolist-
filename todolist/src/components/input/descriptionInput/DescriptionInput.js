@@ -14,7 +14,7 @@ function DescriptionInput({onClick,descrip}) {
             <BsTextParagraph size={"30px"} />
           </i>
           <Form.Control
-            placeholder="Add more deftails about this task..."
+            placeholder="Add more details about this task..."
             className="inputStyle inputArea"
             as="textarea"
             value={descrip}

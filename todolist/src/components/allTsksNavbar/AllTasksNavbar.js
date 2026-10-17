@@ -99,7 +99,7 @@ const[category,setCategory]=useState(JSON.parse(localStorage.getItem('category')
                       <span className="iconstyleNavbar">
                         <MdCategory size={20} />{" "}
                       </span>
-                     Filter by categorty
+                     Filter by category
                     </Nav.Link>
                   </Dropdown.Toggle>
 
