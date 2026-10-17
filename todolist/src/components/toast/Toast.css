@@ -3,7 +3,7 @@
     top: 20;
     right: 20;
     background-color: #fff;
-    width: 200px;
+    width: 200px !important;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding:10px 15px;
