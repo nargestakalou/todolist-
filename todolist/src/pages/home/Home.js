@@ -33,7 +33,7 @@ const[showِDeleteModal,setShowDeleteModal]=useState(false)
   const [workTasks, setWorkTasks] = useState(
     allTasks.filter((task) => task.selectedCategory?.title === "Work"),
   );
-  const categoryCarts = JSON.parse(localStorage.getItem("categoryCarts") || []);
+  const categoryCarts = JSON.parse(localStorage.getItem("categoryCarts") || '[]');
   const [newCategoryCarts, setNewCategoryCarts] = useState(categoryCarts);
 
   const [favoriteTasks, setFavoriteTasks] = useState(
