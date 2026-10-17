@@ -1,5 +1,6 @@
 .ContainerSortAllTasks{
     padding: 0 20px;
+    min-width: 480px;
     
 }
 .dropdown:hover{

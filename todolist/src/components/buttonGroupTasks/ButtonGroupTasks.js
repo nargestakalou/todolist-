@@ -7,7 +7,7 @@ function ButtonGroupTasks(props) {
 
 
   return (
-   <div className="containerGroup ">
+   <div className="containerGroupFilter ">
      <ButtonGroup aria-label="Basic example" className={props.isFavorite?'buttonsContainer favoriteBtn':'buttonsContainer'}>
       <Button  onClick={ ()=>props.onClick('All')} className={props.active==='All' ? 'activeBtn':''}  >All</Button>
       <Button onClick={()=>props.onClick('Active')}  className={props.active==='Active'?'activeBtn':''}   >Active</Button>
