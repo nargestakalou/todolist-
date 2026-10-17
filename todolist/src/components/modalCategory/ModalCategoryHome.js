@@ -39,7 +39,6 @@ const createCartHandler=()=>{
 
 const colorIdHandler=(id)=>{
   setColorId(id)
-  console.log(colorId);
   
 
 }
@@ -53,7 +52,6 @@ const colorIdHandler=(id)=>{
     setInputValue(e.target.value)
   }
 const isNextdisabled=inputValue.trim().length<=1 ||  Object.keys(selectedIcon).length === 0;
-console.log(selectedIcon);
 
 
 const clickBtnHandler=()=>{

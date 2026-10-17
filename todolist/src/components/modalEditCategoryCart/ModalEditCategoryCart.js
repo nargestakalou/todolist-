@@ -39,7 +39,6 @@ const editColorHandler=(editColorId)=>{
 }
 const editIconHandler=(editIcon)=>{
   setEditIconKey(editIcon.name)
-  console.log(editIconKey);
   
 }
 const navigate =useNavigate()
@@ -52,7 +51,6 @@ const saveChangeCategoryHandler=()=>{
   
   setEditCategory(updateCategory)
   const updateAllCategory=allCategory.map(cart=>cart.id===updateCategory.id?updateCategory:cart)
-  console.log(updateAllCategory);
   
 const allTasks=JSON.parse(localStorage.getItem('tasks')||'[]')
 const updateAllTasks=allTasks.map(task=>task.selectedCategory.id===updateCategory.id?{...task,selectedCategory:updateCategory}:task)

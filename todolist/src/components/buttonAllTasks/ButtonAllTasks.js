@@ -2,7 +2,6 @@ import "./ButtonAllTasks.css";
 
 function ButtonAllTasks({ title, icon,onClick,isActive ,isFavorite}) {
 
-console.log(isActive);
 
 
   return (

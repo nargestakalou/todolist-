@@ -59,7 +59,6 @@ function AddNewItem() {
   );
 const navigate= useNavigate()
   const addTaskItemHandler = () => {
-     console.log("REMINDER STATE:", reminder);
     const newTask = {
       titleTask,
       selectedCategory,
@@ -72,10 +71,8 @@ const navigate= useNavigate()
       isCompleted: false,
       isFavorite: false,
     };
-         console.log("REMINDER STATE:", reminder);
 
     const newTasks = [...tasks, newTask];
-console.log("NEW TASKS:", newTasks);    
     setTasks(newTasks);
     localStorage.setItem("tasks", JSON.stringify(newTasks));
 

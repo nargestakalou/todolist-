@@ -6,7 +6,6 @@ import categoryIcons from '../../content/categoryIcon/categoryIcon'
 
 function CategoryStepOne(props){
     const icons=categoryIcons
-    console.log(icons);
     
     return(
         <>

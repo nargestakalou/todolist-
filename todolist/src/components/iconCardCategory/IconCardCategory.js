@@ -3,7 +3,6 @@ import './IconCardCategory.css'
 
 function IconCardCategory(props){
 
-// console.log(props);
 
 
     return(

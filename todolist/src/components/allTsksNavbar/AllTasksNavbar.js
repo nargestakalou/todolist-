@@ -12,7 +12,6 @@ import { useState } from "react";
 function AllTasksNavbar(props) {
   const expand = "md";
 const[category,setCategory]=useState(JSON.parse(localStorage.getItem('category')))
-console.log(props);
 
   return (
     <>
