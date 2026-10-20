@@ -64,7 +64,7 @@ const buttonsHadler=(selected)=>{
       sortTasks=[...workTasks]
       setSortChange('default')
     }
-    if(sortTasks==='Due date'){
+    if(sortTitle==='Due date'){
       sortTasks=sortTasks.sort((a,b)=>b.startDate.localeCompare(a.startDate))
       setSortChange('Due date')
     }
