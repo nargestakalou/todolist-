@@ -1,7 +1,7 @@
 import './App.css';
 import Home from './pages/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter,Route,Routes} from "react-router-dom"
+import {HashRouter,Route,Routes} from "react-router-dom"
 import Work from './pages/work/Work';
 import AllTask from './pages/allTask/AllTask';
 import Personal from './pages/personal/Personal';
@@ -11,7 +11,7 @@ import Favorites from './pages/favorites/Favorites';
 import CategoryTasks from './pages/categoryTasks/CategoryTasks';
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
     
     <Routes>
       <Route path='/' element={<Home/>} />
@@ -25,7 +25,7 @@ function App() {
 
     </Routes>
     
-    </BrowserRouter>
+    </HashRouter>
     
   );
 }
