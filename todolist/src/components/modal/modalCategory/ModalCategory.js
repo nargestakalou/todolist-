@@ -11,7 +11,7 @@ function ModalCategory({ isOpen, onClose ,onSelect,categorySelected}) {
 
  const categoryLocal=localStorage.getItem('category')
   const categoryLocalArray=JSON.parse(categoryLocal)
-  const[newCategory,setNewCategory]=useState(JSON.parse(localStorage.getItem('categoryCarts')))
+  const[newCategory,setNewCategory]=useState(JSON.parse(localStorage.getItem('categoryCarts')||'[]'))
 
 
   const [categoryItems, setCategoryItems] = useState(categoryLocalArray?categoryLocalArray:[
