@@ -59,6 +59,25 @@ function AddNewItem() {
   );
 const navigate= useNavigate()
   const addTaskItemHandler = () => {
+
+if(!titleTask.trim()){
+  Swal.fire({
+    icon:'warning',
+    title:'Please enter a title for your task'
+  })
+  return
+}
+if(!selectedCategory){
+  Swal.fire({
+    icon:'warning',
+    title:'Please choose a category'
+  })
+  return
+}
+
+
+
+
     const newTask = {
       titleTask,
       selectedCategory,
