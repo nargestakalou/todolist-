@@ -5,7 +5,7 @@
 This is a task manager built with React.
 It lets users organize tasks into categories.
 
-**Live Demo:** (coming soon)
+**Live Demo:** https://nargestakalou.github.io/todolist-/
 
 ## Screenshots  
 
